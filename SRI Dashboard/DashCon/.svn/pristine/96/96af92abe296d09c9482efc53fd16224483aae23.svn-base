@@ -1,0 +1,53 @@
+
+/*
+ * @author rothr
+ * @desc Holds scripts for mobile view interaction between the Truck Feed
+ * 		 (Sidebar) and the Modules Container(Right Panel).
+ */
+(function(window, document, jQuery, undefined){
+	$(document).ready(function() {
+		      
+		$('.fadeInLeft, .fadeInOut, .fadeInRight, .fadeOutRight').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+		      $(this).removeClass('fadeInDown');
+		});
+		
+		$('#frameCloser').click(function(e) {
+			e.preventDefault();
+			$('#frameContainer').fadeOut();
+		});
+		$('#frameContainer').hide(0);
+		$('#frameContainer').on('openFrame', function(e) {
+			e.preventDefault();
+			$(this).removeClass('hidden').fadeIn();
+		});
+
+		
+		$('#phoneSideBar').click( function(e) {
+			e.preventDefault();
+			$('#mainContent').removeClass('hidden-xs');
+			$('#sideBar').addClass('hidden-xs');
+			$(this).hide(0);
+			$('#phoneModules').show(0)
+		});
+
+		
+		$('#phoneSideBar').on('phone:touch', function(e) {
+			e.preventDefault();
+			setTimeout(function() {
+				$('#mainContent').removeClass('hidden-xs');
+				$('#sideBar').addClass('hidden-xs');
+			}, 200);
+			$(this).hide(0);
+			$('#phoneModules').show(0)
+		});
+		
+		$('#phoneModules').click( function(e) {
+			e.preventDefault();
+			$('#mainContent').addClass('hidden-xs');
+			$('#sideBar').removeClass('hidden-xs');
+			$(this).hide(0);
+			$('#phoneSideBar').show(0)
+		});
+		
+	});
+})(window, document, $);

@@ -1,0 +1,32 @@
+
+
+'use strict';
+
+
+angular.module('sri.controller.Safer', [])
+	.controller('SaferCTRL', ['$scope', '$http', '$timeout', function( $scope, $http, $timeout ) {
+		$scope.truck = $scope.truck || {};
+		$scope.safer = $scope.safer || {};
+		$scope.safer.id = 'safer';
+		$scope.safer.title = 'USDOT SAFER';
+		$scope.safer.data = $scope.truck.current.safer;
+		
+		$scope.$watch('truck', function( newValue, oldValue ) {
+			if( newValue !== oldValue ) {
+				$http.get('/DashCon/resources/safer/2465358').success( loadSafer ).then(function() {
+					$timeout(function() {
+						$scope.safer.loading = false;
+					}, 1200);
+				});
+			}
+		}, true);
+		
+		function loadSafer( data ) {
+			$scope.safer.loading = true;
+
+			$scope.safer.data = data;
+			
+			if( data == "" || data == undefined || data == null ) return false;
+			
+		}
+	}]);

@@ -1,0 +1,107 @@
+/**
+ * @author rothrob
+ * @desc   User Router
+ */	
+define([
+	'backbone',
+	'models/User',
+	'collections/Users',
+	'views/user/CreateUser',
+	'views/user/EditUser',
+	'views/user/ListUsers'
+], function(Backbone, User, Users, CreateUser, EditUser, ListUsers){
+	
+	console.log(Users);
+	
+	var Route = Backbone.Router.extend({
+		routes: {
+			'' : 'index',
+			'users': 'index',
+			'edit/:id' : 'editUser',
+			'new' : 'createUser'
+		},
+		
+		index : function() {		
+			$('#moduleTitle').text('Users');
+			$('#mainContainer').html(
+					'<a href="#new" id="create" class="btn btn-sm btn-success" title=""><span class="glyphicon glyphicon-plus-sign"></span> New User</a> ' +
+					'<a href="#search" id="search" class="btn btn-sm btn-primary" title=""><span class="glyphicon glyphicon-search"></span> Search</a>' +
+					'<br /><br />' +
+					'<table id="user-table" class="table table-bordered table-stripped table-hover">' +
+						'<thead>' +
+							'<tr>' +
+								'<th>User Id</th>' +
+								'<th>Name</th>' +
+								'<th class="hidden-xs hidden-sm">Email</th>' +
+								'<th>State</th>' +
+								'<th>Options</th>' +
+							'</tr>' +
+						'</thead>' +
+						'<tbody id="tableBody"></tbody>' +
+					'</table>');		
+			var users = new Users;
+			users.fetch().then( function() {
+				var usersView = new ListUsers({collection: users});
+				$('#user-table').append(usersView.render().el);
+			});
+		},
+		// route for the Edit User page; template = user-edit-template
+		editUser : function(id) {
+			//--Set title of the page
+			$('#moduleTitle').text(id);
+			//--load initial content
+			$('#mainContainer').html(
+				'<div class="alert alert-success alert-dismissable">'+
+				  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
+				  '<span id="alertMessage"></span>'+
+				'</div>'
+			  );
+			//--instantiate model
+			var user = new User;
+			//--set model id to userId
+			user.set('userId', id);
+			//--instantiate view EditUser.js
+			var editUserView = new EditUser({model: user});
+			//--render our view
+			editUserView.render();
+		},
+		createUser : function() {
+			$('#moduleTitle').text('New User');
+			$('#mainContainer').html(
+					'<div class="alert alert-success alert-dismissable">'+
+					  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
+					  '<span id="createdUserId"></span>'+
+					'</div>'
+				  );
+			var user = new User;
+			var createUserView = new CreateUser({model: user});
+			$('#mainContainer').append(createUserView.render().el);
+
+			$('input[type="radio"][name="user_role"]').change(function() {
+				var $this = $(this);
+				if($this.is(':checked'))
+					$this.addClass('checked');
+				else
+					$this.removeClass('checked');
+			});
+		},
+		
+		sites : function() {
+			$('#moduleTitle').text('Sites');
+			$('#mainContainer').html(template('siteType'));
+		},
+		
+		devices : function() {
+			$('#moduleTitle').text('Devices');
+			$('#mainContainer').html("");
+		},
+		
+		messages : function() {
+			$('#moduleTitle').text('Messages');
+			$('#mainContainer').html("");
+		}
+	});
+	
+	return Route;
+	
+});

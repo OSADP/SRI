@@ -1,0 +1,186 @@
+/* MAIN STYLES FOR THIS APPLICATION */
+.material-effect {
+  overflow: auto;
+}
+.material {
+  display: block;
+  position: absolute;
+  background: #ffffff;
+  border-radius: 100%;
+  transform: scale(0);
+  opacity: .5;
+}
+.material.animate-material {
+  -webkit-animation: ripple 0.65s linear;
+  -moz-animation: ripple 0.65s linear;
+  -o-animation: ripple 0.65s linear;
+  animation: ripple 0.65s linear;
+}
+@-webkit-keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+  }
+}
+@-moz-keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+  }
+}
+@-o-keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+  }
+}
+@keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+  }
+}
+.navbar-inverse {
+  background-color: #8e44ad;
+  background-image: radial-gradient(500px at 30% 50%, rgba(41, 128, 185, 0.3), #8e44ad), radial-gradient(200px at 80% 50%, rgba(41, 128, 185, 0.5), #8e44ad);
+  color: #ecf0f1;
+  border: none;
+}
+.navbar-inverse .navbar-brand {
+  transition: .3s;
+}
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+  background-color: #763890;
+  background-color: black;
+  zoom: 1;
+  background-color: transparent\9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000, endColorstr=#33000000)";
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000, endColorstr=#33000000);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.navbar-inverse .navbar-brand img {
+  height: 16pt;
+}
+.navbar-inverse .navbar-nav li.active > a {
+  background-color: #763890;
+  background-color: #000000;
+  zoom: 1;
+  background-color: transparent\9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000, endColorstr=#33000000)";
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000, endColorstr=#33000000);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.navbar-inverse .navbar-nav li.active > a:hover,
+.navbar-inverse .navbar-nav li.active > a:focus {
+  background-color: #763890;
+  background-color: #000000;
+  zoom: 1;
+  background-color: transparent\9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000, endColorstr=#33000000)";
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000, endColorstr=#33000000);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.navbar-inverse .navbar-nav li a {
+  transition: .3s;
+}
+.navbar-inverse .navbar-nav li a:hover,
+.navbar-inverse .navbar-nav li a:focus {
+  color: white;
+  background-color: #763890;
+  background-color: #000000;
+  zoom: 1;
+  background-color: transparent\9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000, endColorstr=#33000000)";
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000, endColorstr=#33000000);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.module-icon {
+  display: block;
+  border-radius: 5px;
+  overflow: auto;
+}
+.module-icon:hover,
+.module-icon:focus {
+  background: #f0f0f8;
+  cursor: pointer;
+  text-decoration: none;
+}
+.module-icon p {
+  color: #555;
+  text-align: center;
+}
+.btn {
+  transition: .3s;
+}
+.list-group-item:hover,
+.list-group-item:focus,
+.list-group-item:selected {
+  background-color: rgba(142, 68, 173, 0.1) !important;
+  background-image: -webkit-linear-gradient(90deg, rgba(142, 68, 173, 0.1), rgba(112, 54, 136, 0.1));
+  background-image: -moz-linear-gradient(90deg, rgba(142, 68, 173, 0.1), rgba(112, 54, 136, 0.1));
+  background-image: -ms-linear-gradient(90deg, rgba(142, 68, 173, 0.1), rgba(112, 54, 136, 0.1));
+  background-image: -o-linear-gradient(90deg, rgba(142, 68, 173, 0.1), rgba(112, 54, 136, 0.1));
+  background-image: linear-gradient(90deg, rgba(142, 68, 173, 0.1), rgba(112, 54, 136, 0.1));
+}
+.list-group-item.active,
+.list-group-item.active:hover,
+.list-group-item.active:focus {
+  background-color: #a563c1 !important;
+  background-image: -webkit-linear-gradient(90deg, #a563c1, rgba(41, 128, 185, 0.3));
+  background-image: -moz-linear-gradient(90deg, #a563c1, rgba(41, 128, 185, 0.3));
+  background-image: -ms-linear-gradient(90deg, #a563c1, rgba(41, 128, 185, 0.3));
+  background-image: -o-linear-gradient(90deg, #a563c1, rgba(41, 128, 185, 0.3));
+  background-image: linear-gradient(90deg, #a563c1, rgba(41, 128, 185, 0.3));
+  border-color: #7f3d9b !important;
+}
+.list-group-item.selected {
+  background-color: rgba(142, 68, 173, 0.05) !important;
+  background-image: -webkit-linear-gradient(90deg, rgba(142, 68, 173, 0.05), rgba(112, 54, 136, 0.05));
+  background-image: -moz-linear-gradient(90deg, rgba(142, 68, 173, 0.05), rgba(112, 54, 136, 0.05));
+  background-image: -ms-linear-gradient(90deg, rgba(142, 68, 173, 0.05), rgba(112, 54, 136, 0.05));
+  background-image: -o-linear-gradient(90deg, rgba(142, 68, 173, 0.05), rgba(112, 54, 136, 0.05));
+  background-image: linear-gradient(90deg, rgba(142, 68, 173, 0.05), rgba(112, 54, 136, 0.05));
+}
+.btn-primary {
+  background-color: #8e44ad !important;
+  background-image: -webkit-linear-gradient(90deg, #8e44ad, #703688);
+  background-image: -moz-linear-gradient(90deg, #8e44ad, #703688);
+  background-image: -ms-linear-gradient(90deg, #8e44ad, #703688);
+  background-image: -o-linear-gradient(90deg, #8e44ad, #703688);
+  background-image: linear-gradient(90deg, #8e44ad, #703688);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: none !important;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #a563c1 !important;
+  background-image: -webkit-linear-gradient(90deg, #a563c1, rgba(41, 128, 185, 0.3));
+  background-image: -moz-linear-gradient(90deg, #a563c1, rgba(41, 128, 185, 0.3));
+  background-image: -ms-linear-gradient(90deg, #a563c1, rgba(41, 128, 185, 0.3));
+  background-image: -o-linear-gradient(90deg, #a563c1, rgba(41, 128, 185, 0.3));
+  background-image: linear-gradient(90deg, #a563c1, rgba(41, 128, 185, 0.3));
+}
+.form-control:focus {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(142, 68, 173, 0.75);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(142, 68, 173, 0.75);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(142, 68, 173, 0.75);
+  border-color: rgba(41, 128, 185, 0.3);
+}

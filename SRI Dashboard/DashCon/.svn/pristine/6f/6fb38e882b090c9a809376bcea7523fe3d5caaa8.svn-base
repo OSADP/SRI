@@ -1,0 +1,125 @@
+/**
+ * @author rothrob
+ * @desc   Edit User View
+ */	
+define(['backbone'], function(Backbone){
+	//this is the View which contains most of the logic
+	//for our Edit User module in the User Administration app..
+	var EditUserView = Backbone.View.extend({
+		//this defines the template of this View..
+		template: template('edit-user-template'),
+		//this loads logic upon instantiating this View
+		initialize: function() {
+			//this hides our alerts, this might be repetative
+			//but is on pupose in case something fail, which
+			//is unlikely, but what the heck..
+			$('.alert').hide(0);
+			//this is GET request from the server
+			//requesting details from the model id
+			//which in our case is userid..
+			this.model.fetch();
+			//this renders the model of this view
+			//when a change occurs to our model
+			//change means attribute changes..
+			this.model.on('change', this.render, this);
+		},
+		//this is the event handler of Backbone's Views..
+		events: {
+			//this means this View listens for a click event
+			//on an element with an id of submit, which in turn
+			//will trigger the updateUser function..
+			'click #submit': 'updateUser'
+		},
+		//this is the 'update' user function that is responsible for
+		//gathering user input from the form, 'set' it to the corresponding
+		//model attributes and make a PUT request to our web service..
+		updateUser: function(e) {
+			//prevent the submit event from reloading the page
+			//naturally because we don't want reloading our page's
+			//state in a single page app..
+			e.preventDefault();
+			//show loader gif
+			this.showLoader();
+			//cache our this and model for local calls
+			var $this = this;
+			var $model = this.model;
+			//'set' new values to the model from the 
+			//Edit User form..
+			$model.set( 'firstName', _.escape($('#firstName').val()) );
+			$model.set( 'lastName',  _.escape($('#lastName').val()) );
+			$model.set( 'email',  _.escape($('#email').val()) );
+	
+			//validate model before updating
+			if ( $model.get('email') === "" ) {
+				$this.errorAlert("<strong>Form Error</strong>: Email shouldn't be empty.");
+			} else if ( /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test($model.get('email')) === false ) {
+				$this.errorAlert("<strong>Form Error</strong>: Email entered is not a valid format.");
+			} else {
+				//'submit' a PUT request to update the database..
+				$model.save(null, {
+					success: function(model, response) {
+						$this.successAlert(model, 3000);
+					},
+					error: function(response) {
+						console.log(response);
+					},
+					//since our model has validate .save() validates our model before sending a request
+					//which will trigger fail because we don't edit passwords and role yet.
+					validate: false
+				});
+			}
+	
+		},
+		
+		successAlert: function(model, fadeTime) {
+			$('#alertMessage').html("User <strong>" + model.get('userId') + "</strong> is successfully updated.");
+			$('.alert-danger').removeClass('alert-danger').addClass('alert-success');
+			$('.alert-success').fadeIn(100);
+			
+			setTimeout(function() {
+				$('.alert.alert-success').fadeOut(500);
+			}, fadeTime);
+			
+			//hide loader gif
+			this.hideLoader();
+		},
+		
+		errorAlert: function(message) {
+			$('#alertMessage').html(message);
+			$('.alert-success').removeClass('alert-success').addClass('alert-danger');
+			$('.alert-danger').fadeIn(100);
+			
+			//hide loader gif
+			this.hideLoader();
+		},
+		
+		showLoader: function() {
+			$("#ajaxLoader").show(0);
+		},
+		
+		hideLoader: function() {
+			$("#ajaxLoader").fadeOut();
+		},
+	
+		render: function() {
+			//setup the template to be used
+			//running on the helper function we coded in main.js
+			var $model = this.model;
+			var template = this.template($model.attributes);
+			//add details to the template..
+			this.$el.html(template);
+			//append the element to the container in the DOM..
+			$('#mainContainer').append(this.el);
+			//Populate the our Edit User <form>..
+			$('#firstName').val( _.unescape($model.get('firstName')) );
+			$('#lastName').val( _.unescape($model.get('lastName')) );
+			$('#email').val( _.unescape($model.get('email')) );
+			//like a good dev we need to return this for chaining..
+			this.hideLoader();
+			return this;
+		}
+	});
+	
+	return EditUserView;
+	
+});

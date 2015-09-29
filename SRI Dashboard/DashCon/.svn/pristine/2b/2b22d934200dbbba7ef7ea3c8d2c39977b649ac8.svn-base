@@ -1,0 +1,25 @@
+package sri.data.dao;
+
+import java.util.List;
+
+import sri.data.PrePass;
+public interface PrePassDao {
+	
+	public List<PrePass>getAllPrePassData();
+	public List<PrePass>getAllCarriers();
+	public List<PrePass>getAllLastInspectionStatus(String status);
+	public List<PrePass>getAllLastInspectionLocation(String location);
+	public PrePass getDataByCarrierName(String carrierName);
+	public PrePass getDataByDotNumber(String dotNumber);
+	public PrePass getDataByEquipmentNumber(String equipmentNumber);
+	public PrePass getDataByJurisdiction(String jurisdiction);
+	public PrePass getDataByLicensePlate(String licensePlate);
+	public PrePass getDataByVin(String vin);
+	public PrePass getDataByDateTimeStamp(String timeStamp);
+	public PrePass getDataByStatus(String status);
+	public PrePass getDataByViolationStatus(String violationStatus);
+	public PrePass getDataByLastInspectionLocation(String location);
+	public PrePass getDataByLastInspectionDate(String date);
+	public PrePass getDataByLastInspectionStatus(String status);
+
+}

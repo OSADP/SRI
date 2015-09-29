@@ -1,0 +1,28 @@
+
+(function() {
+	
+	window.App = {
+			Model : {},
+			Collection : {},
+			View : {},
+			Event : {}
+	};
+	
+	// create Backbone Event for multiple views triggering
+	App.Event.Vehicle = {};
+	_.extend(App.Event.Vehicle, Backbone.Events);
+	
+	//another global variable for our template helper
+	window.template = function(templateId) {
+		_.templateSettings = {
+		  interpolate: /\{\{(.+?)\}\}/g
+		};
+		return _.template( $('#' + templateId).html() ); 
+	};
+	
+	//added function to capitalize first letters
+	String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+	};
+	
+})();

@@ -1,0 +1,19 @@
+package sri.data.dao;
+
+import java.util.List;
+
+import sri.data.Device;
+import sri.data.DeviceType;
+
+public interface DeviceDao {
+	
+	public List<Device> getAllDevices();
+
+	public List<Device> getAllDevicesBySite(String site);
+	public List<Device> getAllDevicesByVendor(String vendor);	
+	public List<Device> getAllDevicesByDeviceName(String deviceName);
+	public List<Device> getAllDevicesByDeviceTypeId(String typeId);
+	public Device getDeviceByName(String name);
+	public Device getDeviceByVendorId(String vendorId);
+	public Device getDeviceBySite(String site);
+}

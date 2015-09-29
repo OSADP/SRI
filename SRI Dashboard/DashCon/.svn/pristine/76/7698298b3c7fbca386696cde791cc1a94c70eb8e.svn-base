@@ -1,0 +1,16 @@
+package sri.dao;
+
+import java.util.List;
+
+import sri.data.DriveWyze;
+
+public interface DriveWyzeDao {
+
+	public List<DriveWyze> getAllTrucks();
+	public List<DriveWyze> getAllTrucksByState(String state);
+	public DriveWyze getTruckByLicense(String license);
+	public DriveWyze getTruckByDotNumber(String dotNumber);
+	public DriveWyze getTruckBySafetyDotNumber(String safetyDotNumber);
+	public DriveWyze getTruckByVin(String vin);
+	
+}

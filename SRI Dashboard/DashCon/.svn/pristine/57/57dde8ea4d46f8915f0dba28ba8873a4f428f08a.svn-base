@@ -1,0 +1,94 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<title>SRI Admin - User</title>
+		
+		<link rel="icon" type="image/png" href="/DashCon/img/favicon.png" />
+		
+		<!-- <link rel="stylesheet" href="/DashCon/vendor/bootstrap/custom/css/bootstrap.min.css" /> -->
+		<link rel="stylesheet" href="/DashCon/admin/styles/admin.css">
+
+	</head>
+	
+	<body>
+		<!-- BEGIN TOP NAVIGATION -->
+		<jsp:include page="includes/top-navigation.jsp">
+			<jsp:param name="sitesActive" value="active"></jsp:param>
+		</jsp:include>
+		
+		<!-- BEGIN MAIN -->
+		<div class="stage">
+		
+			<div class="container">
+			
+				<div id="ajaxLoader">
+					<img src="/DashCon/img/bar-loader.gif" id="" class="pull-right" alt="loader" />
+				</div>
+				
+				<h1 class="" id="moduleTitle">Sites</h1>
+				<!-- this will be the container for our views -->
+				<div id="mainContainer"></div>
+				<!-- /// -->
+			</div>
+			
+		</div>
+		<!-- END MAIN -->
+		
+		
+		<!-- these are the templates used by our views for this page -->
+		<jsp:include page="templates/site/list-site.jsp"></jsp:include>
+		<jsp:include page="templates/site/edit-site.jsp"></jsp:include>
+		<jsp:include page="templates/site/create-site.jsp"></jsp:include>
+		
+		<footer class="container-fluid navbar navbar-fixed-bottom navbar-default">
+			<div class="container">
+				
+				<ul class="nav nav-pills pull-left" style="font-size: 12px">
+					<li><a href="/DashCon">Smart Roadside Initiative</a></li>
+				</ul>
+				
+				<ul class="nav nav-pills pull-right hidden-sm hidden-xs" style="font-size: 12px">
+					<li><a href="/DashCon">Home</a></li>
+					<li><a href="/DashCon">About</a></li>
+					<li><a href="/DashCon">DashCon</a></li>
+					<li><a href="/DashCon">Login</a></li>
+				</ul>
+			
+			</div>
+		</footer>
+		
+	</body>
+	
+	<!-- Scripts for Backbone -->
+	<script src="/DashCon/js/jquery-1.11.0.js"></script>
+	<script src="/DashCon/vendor/underscore/underscore.js"></script>
+	<script src="/DashCon/vendor/backbone/backbone.js"></script>
+	<script src="scripts/main.js"></script>
+	<!-- Bootstrap UI script -->
+	<script src="/DashCon/vendor/bootstrap/custom/js/bootstrap.min.js"></script>
+	
+	<!-- Backbone components for this page -->
+	<!-- MODELS -->
+	<script type="text/javascript" src="scripts/models/Site.js"></script>
+	<!-- COLLECTIONS -->
+	<script type="text/javascript" src="scripts/collections/Sites.js"></script>
+	<!-- VIEW -->
+	<script type="text/javascript" src="scripts/views/site/EditSite.js"></script>
+	<script type="text/javascript" src="scripts/views/site/ListSites.js"></script>
+	<script type="text/javascript" src="scripts/views/site/CreateSite.js"></script>
+	
+	<!-- Start our application -->
+	<script type="text/javascript" src="scripts/routers/SiteRouter.js"></script>
+	<script type="text/javascript">
+		//start the app
+		new App.Route;
+		Backbone.history.start();	
+	</script>
+	
+</html>

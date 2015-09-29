@@ -1,0 +1,50 @@
+	
+	
+// Create a configuration for our user routes
+function userRouteConfig($urlRouterProvider, $stateProvider) {
+	// First define a default route for our app
+	// This means any route used other than what we defined
+	// will load this route
+	$urlRouterProvider.otherwise('/');
+	// Define our 'states' aka routes
+	$stateProvider
+		// State for Listing all users
+		.state('listUsers', {
+			url: '/',
+			templateUrl: 'templates/user/list-user.html',
+			controller: 'ListUsersCTRL',
+			resolve: {
+				users: ['$http', function( $http ) {
+					return $http.get('/DashCon/resources/user').then(function( response) {
+						return response.data;
+					});
+				}]
+			}
+		})
+		// State for editing specific users
+		.state('editUser', {
+			url: '/edit/:userId',
+			templateUrl: 'templates/user/edit-user.html',
+			controller: 'EditUserCTRL',
+			resolve: {
+				user: ['$http', '$stateParams', function( $http, $stateParams ) {
+					return $http.get('/DashCon/resources/user/' + $stateParams.userId).then(function( response) {
+						return response.data;
+					});
+				}]
+			}
+		})
+		// State for creating users
+		.state('createUser', {
+			url: '/create',
+			templateUrl: 'templates/user/create-user.html',
+			controller: 'CreateUserCTRL',
+			resolve: {
+				stateList: ['$http', function( $http ) {
+					return $http.get('/DashCon/js/states.json').then(function( response ) {
+						return response.data;
+					});
+				}]
+			}
+		})
+}

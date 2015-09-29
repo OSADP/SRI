@@ -1,0 +1,63 @@
+/**
+ * @author rothrob
+ * @define Backbone
+ * @desc   User Model
+ */	
+define(['backbone'], function(Backbone){
+	
+	console.log('User Model');
+
+	var User = Backbone.Model.extend({
+		
+		defaults: {
+			userId: null,
+			firstName: null,
+			lastName: null,
+			email: null,
+			userPassword: null,
+			stateId: null,
+			role: null
+		},
+		
+		idAttribute: 'userId',
+		
+		urlRoot: '/DashCon/resources/user/',
+		
+		toJSON: function() {
+			var attrs = _.clone(this.attributes);
+			attrs = _.pick(attrs, 'userId', 'firstName', 'lastName', 'email', 'userPassword', 'stateId');
+			return attrs;
+		},
+		
+		validate: function(attrs) {
+			
+			if (!attrs.userId) {
+				return "User ID should not be empty.";
+			} 
+			if (!attrs.firstName) {
+				return "Firstname should not be empty.";
+			}
+			if (!attrs.lastName) {
+				return "Lastname should not be empty.";
+			}
+			if (!attrs.userPassword) {
+				return "Password should not be empty.";
+			}
+			if (!attrs.email) {
+				return "Email should not be empty.";
+			} else {
+				console.log(attrs);
+				if (/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(attrs.email) === false)
+					return "The Email you entered is not a valid email format e.g. email@address.com";
+			}
+			if (!attrs.stateId) {
+				return "State ID should not be empty.";
+			}
+			
+		}
+		
+	});
+	
+	return User;
+	
+});

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sri.DeviceTypeMapper">
+
+	<resultMap id="DeviceTypeMapper" type="DeviceType">
+		<id property="typeId" column="TYPE_ID" />
+		<result property="type" column="TYPE" />
+<!-- 		<association property="vendor" column="VENDOR_NAME" javaType="Vendor" resultMap="VendorMapper"/> -->
+<!-- 		<association property="vendor" column="VENDOR_DEVICES" javaType="Vendor" resultMap="VendorMapper"/> -->
+	</resultMap>
+	
+
+	<select id="getAllDeviceTypes" resultMap="DeviceTypeMapper"
+		resultType="DeviceType">
+		SELECT TYPE_ID, TYPE
+		FROM DEVICE_TYPE;
+	</select>
+	
+	<select id="getAllDeviceTypeIds" resultMap="DeviceTypeMapper"
+		resultType="DeviceType">
+		SELECT TYPE_ID
+		FROM DEVICE_TYPE;
+	</select>
+	
+	<select id="getAllDeviceTypesByDeviceType" resultMap="DeviceTypeMapper"
+		resultType="DeviceType">
+		SELECT TYPE_ID, TYPE
+		FROM DEVICE_TYPE
+		WHERE DEVICE_TYPE = #{deviceType};
+	</select>
+	
+		<select id="getAllDeviceTypesBySiteId" resultMap="DeviceTypeMapper"
+		resultType="DeviceType">
+		SELECT t.TYPE_ID, t.TYPE
+		FROM SRI.device_type t
+		inner JOIN SRI.DEVICE d on d.DEVICE_TYPE_ID = t.TYPE_ID
+		inner join SRI.SITE s on d.DEVICE_ID = s.SITE_TYPE_ID
+		where d.DEVICE_TYPE_ID = #{site};
+	</select>
+	
+		<select id="getAllDeviceTypeByVendor" resultMap="DeviceTypeMapper"
+		resultType="DeviceType">
+		SELECT t.TYPE_ID, t.TYPE
+		FROM SRI.device_type t
+		inner JOIN SRI.DEVICE d on d.DEVICE_TYPE_ID = t.TYPE_ID
+		inner join SRI.VENDOR v on d.DEVICE_ID = v.Vendor_ID
+		where v.VENDOR_NAME = #{vendor};
+	</select>
+
+	<select id="getDeviceTypeByTypeId" resultMap="DeviceTypeMapper"
+		resultType="DeviceType">
+		SELECT TYPE_ID, TYPE
+		FROM SRI.DEVICE_TYPE
+		WHERE TYPE_ID = #{typeId};
+	</select> 
+	
+<!-- 	<select id="getDeviceByType" resultMap="DeviceTypeMapper" -->
+<!-- 		resultType="DeviceType"> -->
+<!-- 		SELECT TYPE_ID, TYPE -->
+<!-- 		FROM SRI.DEVICE_TYPE -->
+<!-- 		WHERE TYPE = #{type}; -->
+<!-- 	</select>  -->
+
+	<select id="getDeviceByDeviceType" resultMap="DeviceTypeMapper" resultType="DeviceType">
+		SELECT t.TYPE_ID, t.TYPE
+		FROM SRI.device_type t
+		inner JOIN SRI.DEVICE d on d.DEVICE_TYPE_ID = t.TYPE_ID
+		where t.TYPE = #{deviceType};
+	</select>
+
+	<select id="getDeviceTypeBySite" resultMap="DeviceTypeMapper" resultType="DeviceType">
+		SELECT t.TYPE_ID, t.TYPE
+		FROM SRI.device_type t
+		inner JOIN SRI.DEVICE d on d.DEVICE_TYPE_ID = t.TYPE_ID
+		inner join SRI.SITE s on d.DEVICE_ID = s.SITE_TYPE_ID
+		where d.DEVICE_TYPE_ID = #{site};
+	</select>
+
+	<select id="getDeviceTypeByVendor" resultMap="DeviceTypeMapper" resultType="DeviceType">
+		SELECT t.TYPE_ID, t.TYPE
+		FROM SRI.device_type t
+		inner JOIN SRI.DEVICE d on d.DEVICE_TYPE_ID = t.TYPE_ID
+		inner join SRI.VENDOR v on d.DEVICE_ID = v.Vendor_ID
+		where d.DEVICE_TYPE_ID = #{vendor};
+	</select>
+
+
+
+</mapper>

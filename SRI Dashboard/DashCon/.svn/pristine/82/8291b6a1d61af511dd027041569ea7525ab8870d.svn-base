@@ -1,0 +1,32 @@
+
+'use strict';
+
+
+angular.module('sri.controller.sidebarControls', [])
+	.controller('SidebarControlsCTRL', ['$scope', function( $scope ) {
+		// Populate our filters, these are items in buttons
+		// that are used to filter the truck feed.
+		$scope.filters = $scope.filters || {};
+		$scope.feed = $scope.feed || {};
+		
+		// These are the filters we use and populate as buttons
+		// for the users
+		$scope.filters.statuses = ['All', 'Passed', 'Warned', 'Failed'];
+		$scope.filters.time = [5, 30, 60, 120];
+		$scope.filters.image = ['Plate', 'Truck'];
+		
+		// This is the function that changes filters
+		$scope.filters.statusChange = function( $event ) {
+			var value = $event.target.innerHTML;
+			var displayText = document.getElementById('optionText');
+			displayText.innerHTML = value;
+			
+			if( value !== 'All' ) {
+				$scope.feed.statusFilter = value.toLowerCase();
+			} else {
+				$scope.feed.statusFilter = undefined;
+			}
+			
+		};
+		
+	}])

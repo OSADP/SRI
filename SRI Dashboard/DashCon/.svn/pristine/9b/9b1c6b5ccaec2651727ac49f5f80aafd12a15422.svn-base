@@ -1,0 +1,40 @@
+
+	
+<div class="col-xs-12 module-wrapper" id="saferLookupModule" ng-controller="SaferLookupCTRL as sfr">
+	
+	<div class="module-box">
+
+		<div style="position: relative">
+
+			<div id="btnRefresh" class="btn-clipboard unbutton pull-left" title="Refresh">
+				<span class="glyphicon glyphicon-refresh" ng-class="{'rotating': saferLookup.loading}"></span>
+			</div>
+			
+			<button id="btnSettings" class="btn btn-sm btn-clipboard pull-right" title="Settings">
+				<span class="fa fa-bars"></span>
+			</button>
+
+		</div>
+		
+		<h4>SAFER Lookup</h4>
+			
+<!-- 		<div class="" ng-class="{ 'loader-border': safer.loading }" style="background: transparent; height: 2px;"></div> -->
+		
+		<div class="well">
+			<form class="form-group" name="saferForm" novalidation ng-submit="saferLookup.searchSafer()">
+<!-- 				<label for="saferLookup">Enter US DOT Number:</label> -->
+				<input type="text" class="form-control" ng-model="saferLookup.usdotNumber" placeholder="Enter US DOT Number"/>
+				<button class="btn btn-lg btn-success" type="submit">
+					<span class="fa fa-search"></span>
+					Search
+				</button>
+				<button type="button" class="btn btn-lg btn-primary" ng-click="saferLookup.clearInput($event)" >
+					<span class="fa fa-remove"></span>
+					Clear
+				</button>
+			</form>
+		</div>
+		
+	</div>
+	
+</div>

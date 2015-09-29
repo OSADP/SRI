@@ -1,0 +1,42 @@
+package sri.data;
+
+public class DriveWyze extends SriPojo {
+	
+	private String licensePlate =  "11AA11";
+	private String state = "AL";
+	private String dotNumber = "DOT11";
+	private String safetyDotNumber = "SDN1";
+	private String vin = "1A1A1A1A1A";
+	
+	
+	public String getLicensePlate() {
+		return licensePlate;
+	}
+	public void setLicensePlate(String licensePlate) {
+		this.licensePlate = licensePlate;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getDotNumber() {
+		return dotNumber;
+	}
+	public void setDotNumber(String dotNumber) {
+		this.dotNumber = dotNumber;
+	}
+	public String getSafetyDotNumber() {
+		return safetyDotNumber;
+	}
+	public void setSafetyDotNumber(String safetyDotNumber) {
+		this.safetyDotNumber = safetyDotNumber;
+	}
+	public String getVin() {
+		return vin;
+	}
+	public void setVin(String vin) {
+		this.vin = vin;
+	}
+}

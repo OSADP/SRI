@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sri.mapper.TruckFeed">
+
+<!-- 	Database : SRI  -->
+<!-- 	Schema 	 : TRUCK_FEED -->
+	<resultMap id="TruckFeedMapper" type="TruckFeed">
+		<id property="id" column="ID" />
+		<result property="siteId" column="SITE_ID" />
+		<result property="timestamp" column="TIMESTAMP" />
+		<result property="licensePlate" column="LICENSE_PLATE" />
+		<result property="imageUrl" column="IMAGE_URL" />
+		<result property="driversLicense" column="DRIVERS_LICENSE"></result>
+		<result property="commercialDriversLicense" column="COMMERCIAL_DRIVERS_LICENSE"></result>
+		<result property="vin" column="VIN"></result>
+		<result property="usdotNumber" column="USDOT_NUMBER"></result>
+		<result property="latitude" column="LATITUDE"></result>
+		<result property="longitude" column="LONGITUDE"></result>
+		<result property="sequenceNumber" column="SEQUENCE_NUMBER"></result>
+	</resultMap>
+
+	<resultMap id="TruckFeedWimTimesMapper" type="TruckFeedWimTimes">
+		<id property="id" column="ID" />
+		<result property="siteId" column="site_id" />
+		<result property="wimEntered" column="wim_entered" />
+		<result property="wimLeft" column="wim_left" />
+	</resultMap>
+
+	<select id="listAllTruckFeed" resultMap="TruckFeedMapper">
+		SELECT *
+		FROM SRI.TRUCK_FEED;
+	</select>
+	
+	<select id="getTruckFeed" resultMap="TruckFeedMapper">
+		SELECT *
+		FROM SRI.TRUCK_FEED
+		WHERE TIMESTAMP = #{timestamp};		
+	</select>
+	
+	<select id="getTruckFeedBySequenceNumberAndSiteId" resultMap="TruckFeedMapper">
+		SELECT *
+		FROM SRI.TRUCK_FEED
+		WHERE SEQUENCE_NUMBER = #{sequenceNumber} AND SITE_ID = #{siteId};		
+	</select>
+	
+	<select id="getTruckFeedWimTimes" resultMap="TruckFeedWimTimesMapper">
+		SELECT ID, WIM_ENTERED, WIM_LEFT
+		FROM SRI.TRUCK_FEED
+		WHERE ID = #{id};		
+	</select>
+	
+	<insert id="insertTruckFeed">
+		<selectKey resultType="int" keyProperty="id" order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+		INSERT INTO sri.truck_feed (
+				site_id,
+				timestamp,
+				approach_entered,
+				license_plate,
+				image_url,
+				drivers_license,
+				commercial_drivers_license,
+				vin,
+				usdot_number,
+				latitude,
+				longitude,
+				sequence_number
+			) VALUES (
+				#{siteId},
+				#{timestamp},
+				#{timestamp},
+				#{licensePlate},
+				#{imageUrl},
+				#{driversLicense},
+				#{commercialDriversLicense},
+				#{vin},
+				#{usdotNumber},
+				#{latitude},
+				#{longitude},
+				#{sequenceNumber}
+			);
+	</insert>
+	
+	<update id="updateTruckFeedWimEntered" parameterType="TruckFeed" >
+	    UPDATE SRI.TRUCK_FEED 
+	    SET WIM_ENTERED = #{timestamp}, TIMESTAMP = #{timestamp}
+		where ID = #{id}
+	</update>
+	
+	<update id="updateTruckFeedWimLeft" parameterType="TruckFeed" >
+	    UPDATE SRI.TRUCK_FEED 
+	    SET WIM_LEFT = #{timestamp}, TIMESTAMP = #{timestamp}, SEQUENCE_NUMBER = #{sequenceNumber}
+		where ID = #{id}
+	</update>
+	
+</mapper>

@@ -1,0 +1,15 @@
+package sri.data.dao;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import sri.data.TruckFeed;
+
+public interface TruckFeedDao {
+	
+	public List<TruckFeed> listAllTrucks();
+	public TruckFeed getTruckFeed(Timestamp timestamp);
+	public TruckFeed getTruckFeed(String timestamp, String sequenceNumber, Integer siteId);
+	public void insertTruckFeed(TruckFeed truckfeed);
+
+}

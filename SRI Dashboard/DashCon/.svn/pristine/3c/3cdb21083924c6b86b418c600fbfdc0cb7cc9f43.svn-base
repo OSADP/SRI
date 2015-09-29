@@ -1,0 +1,18 @@
+/**
+ * @author rothrob
+ * @define App, Backbone
+ * @desc   Vendors Collection
+ */	
+define(['app', 'backbone'], function(App, Backbone){
+
+	App.Collections.Vendors = Backbone.Collection.extend({
+		
+		model : App.Models.Vendor,
+		
+		url: '/DashCon/resources/vendor/'
+			
+	});
+	
+	return App;
+	
+});

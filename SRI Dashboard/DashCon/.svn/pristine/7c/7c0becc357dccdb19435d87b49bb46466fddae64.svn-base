@@ -1,0 +1,47 @@
+
+
+
+<div class="truck-entry-controls clearfix" ng-controller="SidebarControlsCTRL as SBC">
+
+	<div class="btn-group dropdown col-xs-4">
+	  <button type="button" class="btn btn-sm btn-primary dropdown-toggle btn-icon col-md-3 col-xs-12" data-toggle="dropdown">
+	  	<span class="glyphicon glyphicon-eye-open"></span>
+	  </button>
+	  <button type="button" class="btn btn-sm btn-primary dropdown-toggle btn-value col-md-9 hidden-xs hidden-sm" data-toggle="dropdown">
+	    <span id="statusText" class="option-text">All</span>
+	    <span class="sr-only">Toggle Dropdown</span>
+	  </button>
+	  <ul id="truckStatusOption" class="dropdown-menu" role="menu">
+	    <li ng-repeat="item in filters.statuses">
+	    	<a href="#" ng-click="filters.statusChange($event)">{{ item }}</a>
+    	</li>
+	  </ul>
+	</div>
+	
+	<div class="btn-group dropdown col-xs-4">
+	  <button type="button" class="btn btn-sm btn-primary dropdown-toggle btn-icon col-md-3 col-xs-12" data-toggle="dropdown">
+	  	<span class="glyphicon glyphicon-time"></span>
+	  </button>
+	  <button type="button" class="btn btn-sm btn-primary dropdown-toggle btn-value col-md-9 hidden-xs hidden-sm" data-toggle="dropdown">
+	    <span class="option-text">120 min</span>
+	    <span class="sr-only">Toggle Dropdown</span>
+	  </button>
+	  <ul id="truckTime" class="dropdown-menu" role="menu">
+	    <li><a href="">5 min</a></li>
+	    <li><a href="">30 min</a></li>
+	    <li><a href="">60 min</a></li>
+	    <li><a href="">120 min</a></li>
+	  </ul>
+	</div>
+	
+	<div class="btn-group dropdown col-xs-4" ng-click="filters.scrollingChange($event)">
+	  <span class="btn btn-sm btn-primary dropdown-toggle btn-icon col-md-3 col-xs-12">
+	  	<span id="scrollingIcon" class="fa fa-unlock"></span>
+	  </span>
+	  <span class="btn btn-sm btn-primary dropdown-toggle btn-value col-md-9 hidden-xs hidden-sm">
+	    <span id="scrollingText">Unlocked</span>
+	    <span class="sr-only">Toggle Dropdown</span>
+	  </span>
+	</div>
+	
+</div>

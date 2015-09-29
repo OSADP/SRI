@@ -1,0 +1,10 @@
+<script type="text/template" id="list-user-template">
+	<td>{{ userId }}</td>
+	<td>{{ firstName }} {{ lastName }}</td>
+	<td class="hidden-xs hidden-sm">{{ email }}</td>
+	<td>{{ state.stateName }}</td>
+	<td>
+		<a href="#edit/{{ userId }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-pencil" title="Edit"></span></a>
+		<button class="btn btn-xs btn-danger" id="delete"><span class="glyphicon glyphicon-trash" title="Delete"></span></button>
+	</td>
+</script>

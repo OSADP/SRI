@@ -1,0 +1,15 @@
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\bin\Debug\LprWindowsXpClient.exe
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\bin\Debug\LprWindowsXpClient.pdb
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\bin\Debug\Newtonsoft.Json.dll
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\bin\Debug\Newtonsoft.Json.xml
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\obj\Debug\LprWindowsXpClient.csprojResolveAssemblyReference.cache
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\obj\Debug\LprWindowsXpClient.Form1.resources
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\obj\Debug\LprWindowsXpClient.Properties.Resources.resources
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\obj\Debug\LprWindowsXpClient.csproj.GenerateResource.Cache
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\obj\Debug\LprWindowsXpClient.exe
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\obj\Debug\LprWindowsXpClient.pdb
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\bin\Debug\LprWindowsXpClient.exe.manifest
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\bin\Debug\LprWindowsXpClient.application
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\obj\Debug\LprWindowsXpClient.exe.manifest
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\obj\Debug\LprWindowsXpClient.application
+c:\users\blackch\documents\visual studio 2012\Projects\LprWindowsXpClient\LprWindowsXpClient\bin\Debug\LprWindowsXpClient.exe.config

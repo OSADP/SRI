@@ -1,0 +1,16 @@
+
+
+'use strict';
+
+
+angular.module('sri.controller.Safer.USInspections', [])
+	.controller('USInspectionsCTRL', ['$scope', function( $scope ) {
+		$scope.usInspectionData = $scope.usInspectionData || {};
+		
+		$scope.$on('saferDataLoaded', function( event, data ) {
+			if( data != undefined && data != '' && data !== null )
+				$scope.usInspectionData = ( data.usInspectionData ) ? data.usInspectionData.inspections : {};
+			else
+				$scope.usInspectionData = {};
+		});
+	}]);

@@ -1,0 +1,89 @@
+package sri.data.ws;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriInfo;
+
+import sri.data.DriveWyze;
+import sri.data.dao.DriveWyzeDao;
+import sri.data.dao.DriveWyzeDaoImpl;
+
+@Path("driveWyze")
+public class DriveWyzeResource {
+	
+	@Context
+	protected UriInfo uriInfo;
+	@Context
+	protected HttpServletRequest req;
+	@Context
+	protected HttpServletResponse resp;
+	
+	private DriveWyzeDao driveWyzeDao;
+	
+	
+	@GET
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public List<DriveWyze> getAllTrucks(){
+		driveWyzeDao = new DriveWyzeDaoImpl();
+		List<DriveWyze> trucks = driveWyzeDao.getAllTrucks();
+		return trucks;
+	}
+	
+	@GET @Path("allTrucksByState/{state}")
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public List<DriveWyze> getAllTrucksByState(String state){
+		driveWyzeDao = new DriveWyzeDaoImpl();
+		List<DriveWyze> trucks = driveWyzeDao.getAllTrucksByState("AL");
+		return trucks;
+	}
+
+	@GET @Path("truckByLicense/{license}")
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public DriveWyze getTruckByLicense(String license){
+		driveWyzeDao = new DriveWyzeDaoImpl();
+		DriveWyze trucks = driveWyzeDao.getTruckByLicense("11AA11");
+		return trucks;
+		}
+	
+	@GET @Path("allTrucksByDotNumber/{dotNumber}")
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public List<DriveWyze> getTruckByDotNumber(String dotNumber){
+		driveWyzeDao = new DriveWyzeDaoImpl();
+		List<DriveWyze> trucks = driveWyzeDao.getAllTrucksByState("DOT11");
+		return trucks;
+		}
+	
+	@GET @Path("allTrucksBySafetyDotNumber/{safetyDotNumber}")
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public List<DriveWyze> getTruckBySafetyDotNumber(String safetyDotNumber){
+		driveWyzeDao = new DriveWyzeDaoImpl();
+		List<DriveWyze> trucks = driveWyzeDao.getAllTrucksByState("SDN1");
+		return trucks;
+		}
+	
+	@GET @Path("allTrucksByVin/{vin}")
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public List<DriveWyze> getTruckByVin(String safetyDotNumber){
+		driveWyzeDao = new DriveWyzeDaoImpl();
+		List<DriveWyze> trucks = driveWyzeDao.getAllTrucksByState("1A1A1A1A1A1A1A");
+		return trucks;
+		}
+		
+	}
+

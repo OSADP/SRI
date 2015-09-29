@@ -1,0 +1,280 @@
+
+/****************************
+	
+	File: main-content.less
+	
+	Desc: This contains styles for the #mainContent
+	interface.
+	
+	Author: Robert Roth
+
+****************************/
+
+#mainContent {
+	
+	background: darken(@default-color, 10%);
+	color: @dark-font-color;
+	
+	.column {
+		padding: 0 !important;
+	}
+	
+	#top, #middle, #bottom {
+		padding-bottom: 10px !important;
+	}
+	
+	#mainMenu > li > a:hover, #mainMenu > li > a:focus {
+		background: darken(@default-color, 15%);
+	}
+		
+	.module-wrapper {
+		padding: 10px;
+		padding-right: 0;
+		padding-bottom: 0;
+	}
+	
+	#left {
+		.module-wrapper {
+			padding-left: 0 !important;
+		}
+	}
+	
+	.module-menu {
+		position: relative;
+	}
+	
+	.module-box {
+		background: @default-color;
+		padding: 10px;
+		border: 1px solid darken(@default-color, 20%);
+		border-radius: 3px;
+		transition: .5s;
+		box-shadow: inset 0 0 2px rgba(255, 255, 255, .7), inset 0 1px 0 rgba(255, 255, 255, .5);
+	}
+	
+	.module-box {
+	
+		h4 {
+		}
+	
+		.well {
+			border-color: darken(#E3E3E3, 10%);
+			margin-bottom: 0;
+			padding-bottom: 10px;
+			
+			p {
+				color: #636363;
+				border-bottom: solid 1px #CCC;
+				margin-bottom: 7px;
+			}
+			
+			.text-status {
+				text-transform: uppercase;
+				
+				&.failed {
+					color: @danger-color;
+				}
+				
+				&.passed {
+					color: @success-color;
+				}
+				
+			}
+		}
+	
+		&.failed {
+			@theme: @danger-color;
+			background: @theme !important;
+			border-color: darken(@theme, 15%);
+			
+			h4 {
+				color: @default-color;
+			}
+			
+			.well {
+				border-color: @theme;
+				
+				.text-status {
+					color: @theme !important;
+				}
+			}
+		}
+	
+		&.passed {
+			@theme: @success-color;
+			
+			background: @theme !important;
+			border-color: darken(@theme, 15%);
+			
+			h4 {
+				color: @default-color;
+				text-shadow: 0 -1px 0 darken(@theme, 15%);
+			}
+			
+			.well {
+				border-color: @theme;
+				
+				.text-status {
+					color: @theme !important;
+				}
+			}
+		}
+	
+		&.warned {
+			@theme: @warning-color;
+			
+			background: @theme !important;
+			border-color: darken(@theme, 15%);
+			
+			h4 {
+				color: @default-color;
+				text-shadow: 0 -1px 0 darken(@theme, 15%);
+			}
+			
+			.well {
+				border-color: @theme;
+				
+				.text-status {
+					color: @theme !important;
+				}
+			}
+		}
+	
+		&.unscreened {
+			@theme: @info-color;
+			
+			background: @theme !important;
+			border-color: darken(@theme, 15%);
+			
+			h4 {
+				color: @default-color;
+				text-shadow: 0 -1px 0 darken(@theme, 15%);
+			}
+			
+			.well {
+				border-color: @theme;
+				
+				.text-status {
+					color: @theme !important;
+				}
+			}
+		}
+	
+		&.module-prepass {
+			@theme: #8e44ad;
+			
+			background: @theme;
+			border-color: darken(@theme, 15%);
+			
+			h4 {
+				color: @default-color;
+				text-shadow: 0 -1px 0 darken(@theme, 15%);
+			}
+			
+			.well {
+				border-color: @theme;
+			}
+	
+			&.failed {
+				@theme: @danger-color;
+				background: @theme !important;
+				border-color: darken(@theme, 15%) !important;
+				
+				.well {
+					border-color: @theme !important;
+					
+					.text-status {
+						color: @theme !important;
+					}
+				}
+			}
+		
+			&.passed {
+				
+				background: @theme !important;
+				border-color: darken(@theme, 15%);
+				
+				h4 {
+					color: @default-color;
+					text-shadow: 0 -1px 0 darken(@theme, 15%);
+				}
+				
+				.well {
+					border-color: @theme;
+					
+					.text-status {
+						color: @success-color !important;
+					}
+				}
+			}
+		}
+	
+		&.module-safer {
+			@theme: #95a5a6;
+			
+			background: @theme;
+			border-color: darken(@theme, 15%);
+			
+			h4 {
+				color: @default-color;
+				text-shadow: 0 -1px 0 darken(@theme, 15%);
+			}
+			
+			.well {
+				border-color: @theme;
+			}
+		}
+	
+		&.module-blue {
+			@theme: lighten(@info-color, 10%);
+			
+			background: @theme;
+			border-color: darken(@theme, 10%);
+			
+			h4 {
+				color: @default-color;
+				text-shadow: 0 -1px 0 darken(@theme, 20%);
+			}
+			
+			.well {
+				border-color: @theme;
+			}
+		}
+	
+		&.module-drivewyze {
+			@theme: darken(@info-color, 5%);
+			
+			background: @theme;
+			border-color: darken(@theme, 10%);
+			
+			h4 {
+				color: @default-color;
+				text-shadow: 0 -1px 0 darken(@theme, 20%);
+			}
+			
+			.well {
+				border-color: @theme;
+			}
+		}
+	}
+	
+	.btn-clipboard {
+		position: float;
+		float: right;
+		margin-left: 3px;
+		display: block;
+	}
+	
+	.btn-inverse {
+		background: #E3E3E3;
+		border-bottom: 2px solid darken(#E3E3E3, 20%);
+	}
+	
+	.btn-inverse:hover {
+		background: #FFF;
+		border: 1px solid darken(#E3E3E3, 5%);
+		border-top: 2px solid darken(#E3E3E3, 5%);
+	}
+	
+
+}

@@ -1,0 +1,86 @@
+/**
+ * @author rothrob
+ * @define App, Backbone
+ * @desc   Site Router
+ */	
+define(['app', 'backbone'], function(App, Backbone){
+	
+	App.Route = Backbone.Router.extend({
+		
+		routes: {
+			'' : 'listSites',
+			'edit/:id' : 'editSite',
+			'new' : 'createSite'
+		},
+		
+		listSites : function() {		
+			
+			$('#moduleTitle').text('Sites');
+			
+			$('#mainContainer').html(
+					'<a href="#/new" id="create" class="btn btn-sm btn-success" title=""><span class="glyphicon glyphicon-plus-sign"></span> New Site</a> ' +
+					'<a href="#/search" id="search" class="btn btn-sm btn-primary" title=""><span class="glyphicon glyphicon-search"></span> Search</a>' +
+					'<br /><br />' +
+					'<table id="tblListSites" class="table table-bordered table-stripped table-hover">' +
+						'<thead>' +
+							'<tr>' +
+								'<th>Site ID</th>' +
+								'<th>Name</th>' +
+								'<th>State</th>' +
+								'<th>Type</th>' +
+								'<th>Description</th>' +
+								'<th>Coordinates</th>' +
+								'<th>Options</th>' +
+							'</tr>' +
+						'</thead>' +
+						'<tbody id="tableBody"></tbody>' +
+					'</table>');
+			
+			var sites = new App.Collections.Sites;
+			
+			sites.fetch().then( function() {
+				var listSitesView = new App.Views.ListSites({collection: sites});
+				$('#tblListSites').append(listSitesView.render().el);
+			});
+			
+		},
+		// route for the Edit User page; template = user-edit-template
+		editSite : function(id) {
+			//--Set title of the page
+			$('#moduleTitle').text("Site ID: " + id);
+			//--load initial content
+			$('#mainContainer').html(
+				'<div class="alert alert-success alert-dismissable">'+
+				  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
+				  '<span id="alertMessage"></span>'+
+				'</div>'
+			  );
+			//--instantiate model
+			var site = new App.Models.Site;
+			//--set model id to userId
+			site.set('id', id);
+			//--instantiate view EditUser.js
+			var editSiteView = new App.Views.EditSite({model: site});
+			//--render our view
+			editSiteView.render();
+		},
+		
+		createSite : function() {
+			$('#moduleTitle').text('New Site');
+			$('#mainContainer').html(
+					'<div class="alert alert-success alert-dismissable">'+
+					  '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
+					  '<span id="createdUserId"></span>'+
+					'</div>'
+				  );
+			var site = new App.Models.Site;
+			var createSiteView = new App.Views.CreateSite({model: site});
+			$('#mainContainer').append(createSiteView.render().el);
+
+		}
+		
+	});
+		
+	return App;
+	
+});

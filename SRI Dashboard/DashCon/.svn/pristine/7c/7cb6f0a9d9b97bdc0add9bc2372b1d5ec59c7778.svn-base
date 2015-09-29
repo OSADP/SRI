@@ -1,0 +1,51 @@
+
+'use strict';
+
+
+angular.module('sri.controller.sidebarControls', [])
+	.controller('SidebarControlsCTRL', ['$scope', function( $scope ) {
+		// Populate our filters, these are items in buttons
+		// that are used to filter the truck feed.
+		$scope.filters = $scope.filters || {};
+		$scope.feed = $scope.feed || {};
+		
+		// These are the filters we use and populate as buttons
+		// for the users
+		$scope.filters.statuses = ['All', 'Passed', 'Warned', 'Failed'];
+		$scope.filters.time = [5, 30, 60, 120];
+		$scope.filters.scrolling = ['Unlocked', 'Locked'];
+		
+		// This is the function that changes filters
+		$scope.filters.statusChange = function( $event ) {
+			var value = $event.target.innerHTML;
+			var displayText = document.getElementById('statusText');
+			displayText.innerHTML = value;
+			
+			if( value !== 'All' ) {
+				$scope.feed.statusFilter = value.toLowerCase();
+			} else {
+				$scope.feed.statusFilter = undefined;
+			}
+			
+		};
+		
+		// This is the function that changes filters
+		$scope.filters.scrollingChange = function( $event ) {
+			var displayText = document.getElementById('scrollingText');
+			var scrollingIcon = document.getElementById('scrollingIcon');
+			
+			var value = displayText.innerHTML;
+			
+			if( value == 'Locked' ) {
+				$scope.truck.scroll = true;
+				scrollingIcon.className = 'fa fa-unlock';
+				displayText.innerHTML = 'Unlocked';
+			} else {
+				$scope.truck.scroll = false;
+				scrollingIcon.className = 'fa fa-lock';
+				displayText.innerHTML = 'Locked';
+			}
+			$event.currentTarget.blur();
+		};
+		
+	}])

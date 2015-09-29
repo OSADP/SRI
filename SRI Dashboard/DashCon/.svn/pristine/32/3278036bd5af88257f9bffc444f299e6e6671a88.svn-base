@@ -1,0 +1,12 @@
+package sri.data.dao;
+
+import java.util.List;
+
+import sri.data.Vendor;
+
+public interface VendorDao {
+	
+	public List<Vendor> getAllVendors();
+	public Vendor getVendorByName(String vendor);
+	public Vendor getVendorById(String Id);
+}

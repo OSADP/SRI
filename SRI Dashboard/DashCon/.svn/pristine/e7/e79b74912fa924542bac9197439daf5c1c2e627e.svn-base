@@ -1,0 +1,16 @@
+
+
+'use strict';
+
+
+angular.module('sri.controller.Safer.SafetyRating', [])
+	.controller('SafetyRatingCTRL', ['$scope', function( $scope ) {
+		var _this = this;		
+		$scope.$on('saferDataLoaded', function( event, data ) {
+			if( typeof data == 'object' && data.safetyRating != undefined ) {
+				_this.data = data.safetyRating;
+			} else {
+				_this.data = '';
+			}
+		});
+	}]);

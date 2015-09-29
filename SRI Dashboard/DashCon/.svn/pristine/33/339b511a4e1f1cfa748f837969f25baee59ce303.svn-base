@@ -1,0 +1,24 @@
+
+/*
+ * @author		Robert Roth
+ * 
+ * @descripion	Main application; initialize our angular app
+ * 
+ * @dependency	sri.factory.User(./services/UserFactory.js)
+ * 
+ * @controllers	
+ */		
+
+angular.module('app:profile', [
+     // Services
+     'sri.factory.User',
+     'sri.directive.Notifyr',
+     'sri.directive.MaterialEffect'
+     ])
+
+	.controller('UserProfileCtrl', ['$scope', 'User', UserProfile])
+
+
+
+
+

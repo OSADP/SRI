@@ -1,0 +1,38 @@
+
+<script type="text/template" id="module-overview">
+						
+	<div class="col-xs-12 module-wrapper" id="overview">
+		
+		<div class="module-box {{ pass }}">
+	
+			<div style="position: relative">
+				
+				<button id="btnSettings" class="btn btn-sm btn-inverse btn-clipboard " title="Settings">
+					<span class="glyphicon glyphicon-cog"></span>
+				</button>
+
+				<button id="btnRefresh" class="btn btn-sm btn-inverse btn-clipboard " title="Refresh">
+					<span class="glyphicon glyphicon-refresh"></span>
+				</button>
+
+			</div>
+			
+			<h4>Overview:</h4>
+			
+			<div class="well">
+				<p>Inspection: <strong><span class="text-info pull-right">{{ inspectionNumber }}</span></strong></p>
+				<p>Inspection Date: <strong><span class="text-info pull-right">{{ inspectionDate }}</span></strong></p>
+				<p>Inspection Location: <strong><span class="text-info pull-right">-</span></strong></p>
+				<p>Status: <strong><span class="text-info text-status {{ pass }} pull-right">{{ pass }}</span></strong></p>
+				<p>Driver Name: <strong><span class="text-info pull-right">{{ driverName }}</span></strong></p>
+				<p>Carrier: <strong><span class="text-info pull-right">{{ carrierName }}</span></strong></p>
+				<p>Last Inspection Location: <strong><span class="text-info pull-right">{{ lastInspectionLocation }}</span></strong></p>
+				<p>Last Inspection Date: <strong><span class="text-info pull-right">{{ lastInspectionDate }}</span></strong></p>
+				<p>Last Inspection Status: <strong><span class="text-info pull-right">{{ lastInspectionStatus }}</span></strong></p>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</script>

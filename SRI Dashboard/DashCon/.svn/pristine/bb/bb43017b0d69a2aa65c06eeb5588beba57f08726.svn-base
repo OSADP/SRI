@@ -1,0 +1,11 @@
+({
+    baseUrl: ".",
+    paths: {
+        jquery: '../../js/jquery-1.11.0',
+        backbone: '../../vendor/backbone/backbone',
+        underscore: '../../vendor/underscore/underscore',
+        bootstrap: '../../vendor/bootstrap/custom/js/bootstrap'
+    },
+    name : 'main',
+    out : 'main-optimized.js'
+});

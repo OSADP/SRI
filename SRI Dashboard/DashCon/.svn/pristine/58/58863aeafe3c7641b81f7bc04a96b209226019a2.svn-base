@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<properties resource="sri/data/mappers/jdbc.properties" />
+
+	<typeAliases>
+		<typeAlias alias="Inspection" type="sri.data.Inspection" />
+		<typeAlias alias="User" type="sri.data.User" />
+		<typeAlias alias="UserGroup" type="sri.data.UserGroup" />
+		<typeAlias alias="Role" type="sri.data.Role" />
+		<typeAlias alias="Site" type="sri.data.Site" />
+		<typeAlias alias="SiteType" type="sri.data.SiteType" />
+		<typeAlias alias="State" type="sri.data.State" />
+		<typeAlias alias="Device" type="sri.data.Device"/>
+		<typeAlias alias="DeviceType" type="sri.data.DeviceType"/>
+		<typeAlias alias="Vendor" type="sri.data.Vendor"/>
+		<typeAlias alias="TruckFeed" type="sri.data.TruckFeed"/>
+		<typeAlias alias="WeightReport" type="sri.data.WeightReport" />
+		<typeAlias alias="Vehicle" type="sri.data.Vehicle" />
+	</typeAliases>
+	
+	<environments default="standalone">
+		<environment id="standalone">
+			<transactionManager type="JDBC" />
+			<dataSource type="JNDI">
+				<property name="data_source" value="jdbc/sriDataSource"/>				
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="sri/data/mappers/AspenMapper.xml" />
+		<mapper resource="sri/data/mappers/UserMapper.xml" />
+		<mapper resource="sri/data/mappers/SiteMapper.xml" />
+		<mapper resource="sri/data/mappers/DeviceMapper.xml" />
+		<mapper resource="sri/data/mappers/DeviceTypeMapper.xml" />
+		<mapper resource="sri/data/mappers/VendorMapper.xml"/>
+		<mapper resource="sri/data/mappers/TruckFeedMapper.xml"/>
+		<mapper resource="sri/data/mappers/WeightReport.xml"></mapper>
+	</mappers>
+	
+</configuration>

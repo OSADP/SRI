@@ -1,0 +1,11 @@
+
+
+
+// Import all modules' LESS files here and this file
+// is imported within the main.less file in
+// dashboard/styles/less
+
+@import "wim/wim.less";
+@import "truck-phone/truck-phone.less"; 
+@import "static-scale/static-scale.less";
+@import "safer/safer.less";

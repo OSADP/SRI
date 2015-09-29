@@ -1,0 +1,10 @@
+
+
+angular.module('SRI.DASHBOARD')
+	.filter('filterTime', function() {
+		function filterTime( items, time ) {
+			return items;
+		}
+
+		return filterTime;
+	})

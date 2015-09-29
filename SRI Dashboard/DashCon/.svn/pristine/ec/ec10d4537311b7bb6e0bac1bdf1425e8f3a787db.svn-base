@@ -1,0 +1,202 @@
+/**
+ * @author rothrob
+ * @define App, Backbone
+ * @desc   CreateSite View
+ */	
+define(['app', 'backbone'], function(App, Backbone){
+
+	App.Views.CreateSite = Backbone.View.extend({
+		template: template('create-site-template'),
+		
+		initialize : function() {
+			$('.alert').hide(0);
+			//************* Load US States
+			$.getJSON('/DashCon/js/states.json', function statesLoader(data) {
+				$.each(data, function(abbr, name) {
+					$('#stateId').append('<option value="' + abbr + '">' + name + '</option>');
+				});
+			});
+			// end of loading US States
+		},
+		
+		events : {
+			'click #create' : 'createSite'
+		},
+		
+		createSite : function(e) {
+			var $this = this;
+			var $model = $this.model;
+			//prevent from reloading the page
+			e.preventDefault();
+			
+			//reset border turning red for errors
+			$.each($('#formCreateSite').children('.form-group'), function() {
+				$(this).removeClass('has-error');
+			});
+			
+			//set the values of the form to the model
+			$model.set({
+				'userId': _.escape($('#userId').val()),
+				'firstName': _.escape($('#firstName').val()),
+				'lastName': _.escape($('#lastName').val()),
+				'userPassword': _.escape($('#password').val()),
+				'email': _.escape($('#email').val()),
+				'stateId': _.escape($('#stateId').val())
+			});
+			
+			if($model.isValid()) {
+				$.ajax({
+					url: '/DashCon/resources/user/register/validate/user',
+					contentType: 'application/json',
+					type: 'POST',
+					data: JSON.stringify($model.toJSON()),//JSON.stringify(attributes),
+					cache: false,
+					success: function(response) {
+						//cache elements into variables
+						var message = "";
+						
+						//build error alert message
+						if (response.userId === "unavailable" || response.email === "unavailable") {
+							if (response.userId == "unavailable") {
+								message = "<strong>Error</strong>: User ID " + $model.get("userId") + " is unavailable.";
+								$this.hasError('userId');
+							}
+							//add break if both are unavailable
+							if (response.email === "unavailable" && response.userId === "unavailable")
+								message += "<br>";
+							
+							if (response.email == "unavailable") {
+								message += "<strong>Error</strong>: Email " + $model.get("email") + " is unavailable.";
+								$this.hasError('email');
+							}
+							//Call function that generates UI's error message
+							$this.errorAlert(message);
+	
+						} else {
+							$this.saveUser($model);
+						}
+					},
+					error: function(response) {
+						
+						
+					}
+				});
+			} else {
+				var fields = "";
+	
+				if( $this.validate( $model.escape('userId'), 'userId', true, /^[a-zA-Z0-9]+$/, 7, 10 ) ) {
+					$("#userId").closest(".form-group").addClass('has-success');
+				}
+				$this.validate( $model.escape('userPassword'), 'password', true );
+				$this.validate( $model.escape('firstName'), 'firstName', true );
+				$this.validate( $model.escape('lastName'), 'lastName', true );
+				
+				if( $this.validate( $model.escape('email'), 'email', true ) ) {
+					if ( /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test( $model.get('email') ) === false )
+						$this.customError("email", "Email entered is invalid. Please enter a valid email ex: email@address.com.");
+					else
+						$("#email").closest(".form-group").addClass('has-success');
+					return false;
+				}
+				
+			}
+			
+		},
+	
+		validate : function(attr, attrName, required, regex, min, max) {
+			var $this = this;
+			//Cache attrName to attrId in case any change to attrName will be made.
+			var attrId = attrName;
+			
+			if( required === true )
+				if(attr === "") {
+					showError("shouldn't be empty, must consist of letters and numbers, no spaces, minimum of " + min + ' and maximum of ' + max + ' characters.');
+					//return false if failed.
+					return false;
+				}
+				
+			if( regex )
+				if( ! regex.test(attr) ) {
+					showError('is not valid.');
+					return false;
+				}
+			
+			
+			this.hasSuccess(attrId);
+			
+			function showError(message) {
+				$this.hasError(attrName);
+				//Catch firstName and lastName because they're presented as 2 words.
+				attrName = (attrName == "firstName") ? 'First Name' : (attrName == "lastName") ? 'Last Name' : attrName;
+				$( '#err_' + attrId ).text( attrName.capitalize() + ' ' + message );
+				//return false if failed.
+				return false;
+			}		
+					
+		},
+		
+		customError : function(id, message) {
+			this.hasError(id);
+			$( '#err_' + id ).text(message);
+			return message;
+		},
+		
+		hasError : function(id) {
+			$("#" + id).closest(".form-group").addClass('has-error');
+			return false;
+		},
+		
+		hasSuccess : function(id) {
+			$("#" + id).closest(".form-group").addClass('has-success');
+			$( '#err_' + id ).text("");
+			return true;
+		},
+		
+		saveUser : function(model) {
+			//show loader gif
+			this.showLoader();
+			
+			var $this = this;
+			
+			model.sync('create', model, {
+				success: $this.successAlert(model, 3000),
+				error: function(response) {
+					$this.errorAlert("Error: Unable to register.", 3000);
+				}
+			});
+		},
+		
+		successAlert: function(model, fadeTime) {
+			$('#createdUserId').html("User <strong>" + model.get('userId') + "</strong> is successfully registered.");
+			$('.alert-danger').removeClass('alert-danger').addClass('alert-success');
+			$('.alert-success').fadeIn(100);
+			
+			setTimeout(function() {
+				$('.alert.alert-success').fadeOut(500);
+			}, fadeTime);
+		},
+		
+		errorAlert: function(message) {
+			$('#createdUserId').html(message);
+			$('.alert-success').removeClass('alert-success').addClass('alert-danger');
+			$('.alert-danger').fadeIn(100);
+		},
+		
+		showLoader: function() {
+			$("#ajaxLoader").show(0);
+		},
+		
+		hideLoader: function() {
+			$("#ajaxLoader").fadeOut();
+		},
+		
+		render: function() {
+			this.$el.html(this.template());
+			this.hideLoader();
+			return this;
+		}
+	});
+	
+	return App;
+	
+});

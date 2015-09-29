@@ -1,0 +1,7 @@
+ CREATE TABLE `usdot_number` (
+  `usdot_number` varchar(45) NOT NULL,
+  `sequence_number` varchar(45) NOT NULL,
+  `manual_entered` tinyint(1) DEFAULT '0',
+  `user_id` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`usdot_number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

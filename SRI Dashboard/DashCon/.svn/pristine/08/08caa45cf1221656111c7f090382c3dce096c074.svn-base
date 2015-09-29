@@ -1,0 +1,38 @@
+/*
+ * author:	Robert Roth
+ * desc:	Controller for creating users.
+ * params:
+ *			$scope 	  - this is the scope of the controller.
+ * 			$http 	  - provides http requests.
+ * 			$state 	  - provides page state properties and functions.
+ * 			stateList	- a resolved list of all states from a JSON file.
+ */
+ function CreateUserCTRL( $scope, $http, $state, stateList ) {
+	$scope.states = stateList;
+	$scope.user = {};
+	$scope.selectedState = 'AL';
+	var x = null;
+	// Methods:
+	$scope.createUser = function() {
+		$scope.user.stateId = $scope.selectedState;
+		$http.post('/DashCon/resources/user', $scope.user)
+			.success(function() {
+				alert('New user created!');
+				$scope.user.userId = '';
+				$scope.user.userPassword = '';
+				$scope.user.firstName = '';
+				$scope.user.lastName = '';
+				$scope.user.email = '';
+				$scope.selectedState = 'AL';
+				$scope.resetForm();
+			})
+			.error(function(data, status, headers, config) {
+				console.log('Error: Unable to create a new user');
+				console.log(config);
+			});
+	}
+	
+	$scope.resetForm = function() {
+		$scope.createForm.$setPristine();
+	};
+}

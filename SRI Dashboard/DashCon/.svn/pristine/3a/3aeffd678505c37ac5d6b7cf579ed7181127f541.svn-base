@@ -1,0 +1,45 @@
+		
+		<nav class="navbar navbar-inverse" id="scrollNav" role="navigation" style="border-radius: 0">
+		  <div class="container">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="/DashCon/">Smart Roadside Initiative</a>
+		    </div>
+		
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li class="top-link active" id="users"><a href="#" class="" title="Users">
+		        	<span class="glyphicon glyphicon-home"></span>
+		        	<span class="">Link</span></a></li>
+		        <li class="top-link" id="sites"><a href="#" class="" title="Sites">
+		        	<span class="glyphicon glyphicon-certificate"></span>
+		        	<span class="">Link</span></a></li>
+		        <li class="top-link" id="devices"><a href="#" class="" title="Devices">
+		        	<span class="glyphicon glyphicon-phone"></span>
+		        	<span class="">Link</span></a></li>
+<!-- 		        <li class="top-link" id="messages"><a href="#/messages" title="Messages"><span class="glyphicon glyphicon-envelope"></span> <span class="">Messages</span></a></li> -->
+<!-- 		      <form class="navbar-form navbar-left" role="search"> -->
+<!-- 		        <div class="form-group"> -->
+<!-- 		          <input type="text" class="form-control" placeholder="Search User"> -->
+<!-- 		        </div> -->
+<!-- 		        <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></button> -->
+<!-- 		      </form> -->
+			  </ul>
+	          <ul class="nav navbar-nav navbar-right">
+		        <li class=""><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hello, User <b class="caret"></b></a>
+		          <ul class="dropdown-menu" id="userOptions">
+		            <li><a href="#" class="">Manage</a></li>
+		            <li><a href="#" class="">Logout</a></li>
+		          </ul>
+		        </li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>

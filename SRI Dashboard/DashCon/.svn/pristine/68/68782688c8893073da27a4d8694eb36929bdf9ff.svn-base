@@ -1,0 +1,30 @@
+
+<script type="text/template" id="module-logger">
+
+	<div class="col-xs-12 module-wrapper" id="logger">
+		
+		<div class="module-box">
+			
+			<div style="position: relative">
+				
+				<button id="btnSettings" class="btn btn-sm btn-inverse btn-clipboard " title="Settings">
+					<span class="glyphicon glyphicon-cog"></span>
+				</button>
+
+				<button id="btnClear" class="btn btn-sm btn-inverse btn-clipboard " title="Clear Log">
+					<span class="glyphicon glyphicon-remove"></span>
+				</button>
+
+			</div>
+			
+			<h4 class="text-primary">Logs:</h4>
+			
+			<div class="well" style="min-height: 320px">
+				<p><span class="log-time"></span> - <span>Test Log.</span></p>
+			</div>
+			
+		</div>
+		
+	</div>
+
+</script>

@@ -1,0 +1,85 @@
+package sri.data.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+
+import sri.data.DriveWyze;
+
+public class DriveWyzeDaoImpl implements DriveWyzeDao{
+	
+	SqlSessionFactory sqlMapper=MyBatisConnectionFactory.getSqlSessionFactory();
+	SqlSession session = sqlMapper.openSession(true);
+	
+	@Override
+	public List<DriveWyze> getAllTrucks() {
+		List<DriveWyze> trucks = new ArrayList<DriveWyze>();
+		
+		try{
+			trucks = session.selectList("11AA11,AL,DOT11,SDN1,1A1A1A1A1A");
+		} finally{
+			session.close();
+		}
+		return trucks;
+	}
+
+	@Override
+	public List<DriveWyze> getAllTrucksByState(String state) {
+		List<DriveWyze>  trucks = null;
+		try{
+				trucks = session.selectList("AL");
+		} finally{
+			session.close();
+		}
+		return trucks;
+	}
+
+	@Override
+	public DriveWyze getTruckByLicense(String license) {
+		DriveWyze truck = null;
+		try{
+			truck = session.selectOne("11AAA11");
+		} finally{
+			session.close();
+		}
+		return truck;
+	}
+
+	@Override
+	public DriveWyze getTruckByDotNumber(String dotNumber) {
+		DriveWyze truck = null; 
+		try{
+			truck = session.selectOne("DOT11");
+		} finally {
+			session.close();
+		}
+		return truck;
+	}
+
+	@Override
+	public DriveWyze getTruckBySafetyDotNumber(String safetyDotNumber) {
+		DriveWyze truck = null;
+		try{
+			truck = session.selectOne("SDN1");
+		} finally {
+			session.close();
+		}
+		
+		return truck;
+	}
+
+	@Override
+	public DriveWyze getTruckByVin(String vin) {
+		DriveWyze truck = null; 
+		try{
+			truck = session.selectOne("1A1A1A1A1A1A1A");
+		} finally {
+			session.close();
+		}
+		return truck;
+	}
+
+}

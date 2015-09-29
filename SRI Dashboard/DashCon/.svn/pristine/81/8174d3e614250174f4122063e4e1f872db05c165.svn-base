@@ -1,0 +1,23 @@
+/**
+ * @author rothrob
+ * @define App, Backbone
+ * @desc   Vendor Model
+ */	
+define(['app', 'backbone'], function(App, Backbone){
+
+	App.Models.Vendor = Backbone.Model.extend({
+		
+		defaults : {
+			vendorId : null,
+			vendorName : null
+		},
+		
+		idAttribute : 'vendorId',
+		
+		urlRoot : "/DashCon/resources/vendor/getVendorById/"
+		
+	});
+	
+	return App;
+	
+});

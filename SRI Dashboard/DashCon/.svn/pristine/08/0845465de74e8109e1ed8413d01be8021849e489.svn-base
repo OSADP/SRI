@@ -1,0 +1,11 @@
+
+
+'use strict';
+
+angular.module('sri.controller.rightPanelMenu', [])
+	.controller('RightMenuCTRL', [ '$scope', function( $scope ) {
+		
+		$scope.triggerFrame = function() {
+			$('#frameContainer').trigger('openFrame');
+		};
+	}])

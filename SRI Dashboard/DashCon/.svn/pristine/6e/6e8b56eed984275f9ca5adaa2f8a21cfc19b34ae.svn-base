@@ -1,0 +1,137 @@
+
+
+'use strict';
+
+
+angular.module('sri.controller.SaferLookup', ['sri.module.Effects'])
+	.controller('SaferLookupCTRL', ['$scope', '$http', '$rootScope', '$timeout', function( $scope, $http, $rootScope, $timeout ) {
+		$scope.truck = $scope.truck || {};
+		var _this = this;
+		_this.hasUSDOT = false;
+		_this.usdotNumber = _this.usdotNumber || null;
+
+		$scope.$watch('truck.current', function( newValue, oldValue ) {
+			if( newValue == undefined ) return false;
+			if( newValue !== oldValue ) {
+				_this.usdotNumber = '';
+				_this.hasUSDOT = false;
+				$http.get('/DashCon/resources/usdot/' + newValue.sequenceNumber)
+				.then( function( response ) {
+					var data = response.data;
+					if( data != undefined ) {
+						if( data.usdotNumber != undefined ) {
+							_this.usdotNumber = data.usdotNumber;
+							$scope.truck.current.usdotNumber = _this.usdotNumber;
+							if( _this.usdotNumber !== '' || _this.usdotNumber !== 'null' ) {
+								_this.hasUSDOT = true;
+								$scope.truck.current.hasUSDOT = true;
+							} else {
+								_this.hasUSDOT = false;
+								$scope.truck.current.hasUSDOT = false;
+							}
+						}
+					}
+				})
+			}
+		});
+		// add the US DOT Number to the controller's scope as well
+		// as adding it to the current active truck
+		function loadUSDOTNumber( data ) {
+			if( typeof data == 'object' && data.usdotNumber != undefined ) {
+				_this.usdotNumber = data.usdotNumber;
+				_this.hasUSDOT = true;
+				$scope.truck.current.hasUSDOT = true;
+				$scope.truck.current.usdotNumber = _this.usdotNumber;
+			} else {
+				_this.usdotNumber = undefined;
+				_this.hasUSDOT = false;
+				$scope.truck.current.hasUSDOT = false;
+				$scope.truck.current.usdotNumber = undefined;
+			}
+			// assign true to signify this is triggered by lookup
+			_this.searchSafer();
+		}
+		
+		_this.searchSafer = function() {
+			// check if triggered by lookup or change of current truck			
+		 	if( _this.usdotNumber != null && _this.usdotNumber != undefined && _this.usdotNumber != null ) {
+			 	_this.loading = true;
+				$http.get('/DashCon/resources/safer/' + _this.usdotNumber )
+				.then( function( response ){
+					loadSafer( response.data );
+					$timeout( function() {
+				 		_this.loading = false;
+					}, 1000);
+				})
+		 	}
+		}
+		
+		function loadSafer( data ) {
+			// a bug happens when switching active truck quicker than
+			// safer can respond and load safer values showing data
+			// to the wrong truck feed, lookup != false helps prevent it
+			// by ensuring the truck's usdot number is equal to the lookup
+				if( typeof data == 'object' && data.companyData != undefined ) {
+					_this.hasUSDOT = true;
+					$scope.truck.current.hasUSDOT = true;
+					$rootScope.$broadcast('saferLookupSuccess', data );
+				} else {
+					_this.hasUSDOT = false;
+					$scope.truck.current.hasUSDOT = false;
+				}
+
+		 	_this.loading = false;
+		}
+		
+		_this.clearInput = function( $event ) {
+			if( $event ) $event.stopPropagation();
+			_this.usdotNumber = null;
+			_this.hasUSDOT = false;
+			$http.delete('/DashCon/resources/usdot/' + $scope.truck.current.sequenceNumber)
+			.success( function() {
+				$scope.truck.current.usdotNumber = undefined;
+				$scope.truck.current.hasUSDOT = false;
+				$rootScope.$broadcast('saferLookupSuccess', '');
+			})
+		}
+		
+		_this.saveUSDOTNumber = function( $event, manualEntered, userId ) {
+			var saferLookup = _this;
+			var usdot= {};
+			usdot.usdotNumber = saferLookup.usdotNumber;
+			usdot.sequenceNumber = $scope.truck.current.sequenceNumber;
+			usdot.manualEntered = manualEntered || 1;
+			usdot.userId = userId || 'not implemented';
+			
+			if( usdot.usdotNumber !== null ) {
+				$http.post('/DashCon/resources/usdot', usdot)
+				.success( function( response, status) {
+					if( status == 201 ) {
+						$scope.truck.current.hasUSDOT = true;
+						$scope.truck.current.usdotNumber = usdot.usdotNumber;
+						_this.usdotNumber = usdot.usdotNumber;
+						_this.hasUSDOT = true;
+//						TODO: Add notification for create USDOT Number
+					} else if( status == 202 ) {
+						$scope.truck.current.hasUSDOT = true;
+//						TODO: remove the commented block of code if proven to cause errors
+//						$scope.truck.current.usdotNumber = undefined;
+//						_this.usdotNumber = undefined;
+						_this.hasUSDOT = true;
+//						TODO: Add notification for updated USDOT Number
+					}
+				})
+				.error( function( res ) {
+					_this.clearInput();
+				});
+			}
+		}
+		
+		$scope.$on('phoneAppUSDOTNumberAvailable', function( event, message ) {
+			_this.usdotNumber = message.usdotNumber;
+			_this.saveUSDOTNumber();
+		});
+
+		return _this;
+		
+	}]);

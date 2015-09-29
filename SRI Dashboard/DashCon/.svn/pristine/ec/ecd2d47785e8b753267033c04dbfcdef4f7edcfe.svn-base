@@ -1,0 +1,14 @@
+
+
+'use strict';
+
+
+angular.module('sri.controller.Safer.USCrashData', [])
+	.controller('USCrashDataCTRL', ['$scope', '$http', '$timeout', function( $scope, $http, $timeout ) {
+		var _this = this;
+		$scope.$on('saferDataLoaded', function( event, data ) {
+			if( typeof data == 'object' && data.usCrashData != undefined ) {
+				_this.data = data.usCrashData;
+			}
+		});
+	}]);

@@ -1,0 +1,207 @@
+package sri.data.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import sri.data.Safer;
+
+public class SaferDaoImpl implements SaferDao{
+
+	SqlSessionFactory sqlMapper=MyBatisConnectionFactory.getSqlSessionFactory();
+	SqlSession session = sqlMapper.openSession(true);
+	@Override
+	public List<Safer> getAllSaferData() {
+		List<Safer> data = null;
+		try{
+			data = session.selectList(null); 
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByLegalName(String legalName) {
+		Safer data = null;
+		try{
+			data = session.selectOne(legalName);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByDbaName(String dbaName) {
+		Safer data = null;
+		try{
+			data = session.selectOne(dbaName);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByPhysicalStreet(String street) {
+		Safer data = null;
+		try{
+			data = session.selectOne(street);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByPhysicalState(String state) {
+		Safer data = null;
+		try{
+			data = session.selectOne(state);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByPhysicalZip(String zip) {
+		Safer data = null;
+		try{
+			data = session.selectOne(zip);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByPhysicalCity(String city) {
+		Safer data = null;
+		try{
+			data = session.selectOne(city);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByMailingStreet(String mailingStreet) {
+		Safer data = null;
+		try{
+			data = session.selectOne(mailingStreet);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByMailingCity(String mailingCity) {
+		Safer data = null;
+		try{
+			data = session.selectOne(mailingCity);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByMailingState(String mailingState) {
+		Safer data = null;
+		try{
+			data = session.selectOne(mailingState);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByMailingZip(String mailingZip) {
+		Safer data = null;
+		try{
+			data = session.selectOne(mailingZip);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByUsDotNumber(String usDotNumber) {
+		Safer data = null;
+		try{
+			data = session.selectOne(usDotNumber);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByMcMx(String mcmx) {
+		Safer data = null;
+		try{
+			data = session.selectOne(mcmx);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByPhoneNumber(String phoneNumber) {
+		Safer data = null;
+		try{
+			data = session.selectOne(phoneNumber);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByFaxNumber(String faxNumber) {
+		Safer data = null;
+		try{
+			data = session.selectOne(faxNumber);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByEmail(String email) {
+		Safer data = null;
+		try{
+			data = session.selectOne(email);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByDotStatus(String dotStatus) {
+		Safer data = null;
+		try{
+			data = session.selectOne(dotStatus);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByEntity(String entity) {
+		Safer data = null;
+		try{
+			data = session.selectOne(entity);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	@Override
+	public Safer getSaferDataByInspectionValue(String inspectionValue) {
+		Safer data = null;
+		try{
+			data = session.selectOne(inspectionValue);
+		} finally {
+			session.close();
+		}
+		return data;
+	}
+	
+	
+
+}

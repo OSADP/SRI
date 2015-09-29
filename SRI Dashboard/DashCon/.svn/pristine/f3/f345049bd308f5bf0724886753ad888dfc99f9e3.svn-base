@@ -1,0 +1,49 @@
+					<div class="truck-entry-controls">
+					
+						<div class="btn-group dropdown col-xs-4">
+						  <button type="button" class="btn btn-sm btn-primary dropdown-toggle btn-icon col-md-3 col-xs-12" data-toggle="dropdown">
+						  	<span class="glyphicon glyphicon-eye-open"></span>
+						  </button>
+						  <button type="button" class="btn btn-sm btn-primary dropdown-toggle btn-value col-md-9 hidden-xs hidden-sm" data-toggle="dropdown">
+						    <span class="option-text">All</span>
+						    <span class="sr-only">Toggle Dropdown</span>
+						  </button>
+						  <ul id="truckStatusOption" class="dropdown-menu" role="menu">
+						    <li><a class="" href="">All</a></li>
+						    <li><a class="text-success" href="">Passed</a></li>
+						    <li><a class="text-warning" href="">Warned</a></li>
+						    <li><a class="text-fail" href="">Failed</a></li>
+						  </ul>
+						</div>
+						
+						<div class="btn-group dropdown col-xs-4">
+						  <button type="button" class="btn btn-sm btn-primary dropdown-toggle btn-icon col-md-3 col-xs-12" data-toggle="dropdown">
+						  	<span class="glyphicon glyphicon-time"></span>
+						  </button>
+						  <button type="button" class="btn btn-sm btn-primary dropdown-toggle btn-value col-md-9 hidden-xs hidden-sm" data-toggle="dropdown">
+						    <span class="option-text">5 min</span>
+						    <span class="sr-only">Toggle Dropdown</span>
+						  </button>
+						  <ul id="truckTime" class="dropdown-menu" role="menu">
+						    <li><a href="">5 min</a></li>
+						    <li><a href="">30 min</a></li>
+						    <li><a href="">60 min</a></li>
+						    <li><a href="">120 min</a></li>
+						  </ul>
+						</div>
+						
+						<div class="btn-group dropdown col-xs-4">
+						  <button type="button" class="btn btn-sm btn-primary dropdown-toggle btn-icon col-md-3 col-xs-12" data-toggle="dropdown">
+						  	<span class="glyphicon glyphicon-picture"></span>
+						  </button>
+						  <button type="button" class="btn btn-sm btn-primary dropdown-toggle btn-value col-md-9 hidden-xs hidden-sm" data-toggle="dropdown">
+						    <span class="option-text">Truck</span>
+						    <span class="sr-only">Toggle Dropdown</span>
+						  </button>
+						  <ul id="truckPicture" class="dropdown-menu" role="menu">
+						    <li><a href="">Plate</a></li>
+						    <li><a href="">Truck</a></li>
+						  </ul>
+						</div>
+						
+					</div>

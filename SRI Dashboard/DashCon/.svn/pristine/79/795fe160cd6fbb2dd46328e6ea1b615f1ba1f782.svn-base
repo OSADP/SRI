@@ -1,0 +1,12 @@
+
+
+'use strict';
+
+
+angular.module('sri.container.Modules', [
+     	'sri.controller.RampWIM',
+     	'sri.controller.TruckPhoneInfo',
+     	'sri.controller.Safer.CompanyData',
+     	'sri.controller.StaticScale',
+     	'sri.controller.SaferLookup'
+     	])

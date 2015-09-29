@@ -1,0 +1,40 @@
+/*
+ * @author	Robert Roth
+ * @desc	Controller for the listing of users received from
+ * 			the UserResource API
+ * @params	$scope 	- this is the scope of the controller.
+ * 			$http 	- provides http requests.
+ * 			$state 	- provides page state properties and functions.
+ * 			users	- a resolved list of users from our API.
+ */
+function ListUsersCTRL( $scope, $http, $state, users ) {
+	$scope.title = 'Users';
+	$scope.noUsers = false;
+	$scope.loaderShow = true;
+	// Since our API is irregular we have to parse the
+	// response to grab our users, this is a case to
+	// case basis, meaning it differs per api
+	$scope.users = [];
+	// This condition checks if our API returned 1 user
+	// or a list/array of users
+	if( users.user ) {
+		if( users.user.email ) {
+			$scope.users.push( users.user );
+		} else {
+			$scope.users = (users.user) ? users.user : users;
+		}	
+	} else {
+		$scope.noUsers = true;
+	}
+	
+	// Methods:
+	$scope.deleteUser = function() {
+		var user = this.user;
+		// Add userId to the URL since that is a requirement
+		// By our API
+		$http.delete('/DashCon/resources/user/' + user.userId);
+		//$state.go($state.current.name, {}, {reload: true});
+		$state.reload();
+	};
+	
+}

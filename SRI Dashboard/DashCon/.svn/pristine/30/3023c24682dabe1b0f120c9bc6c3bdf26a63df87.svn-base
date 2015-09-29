@@ -1,0 +1,22 @@
+
+
+#saferCompanyDataModule {
+	@baseColor: #6C7A89;
+	@fontColor: #ecf0f1;
+	
+	.module-box {
+		background: @baseColor;
+		
+		.box-header {
+			* {
+				color: @fontColor;
+			}
+		}
+	
+		.well {
+			//background: darken(@baseColor, 5%);
+			//color: @fontColor;
+		}
+	}
+
+}

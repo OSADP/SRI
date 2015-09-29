@@ -1,0 +1,157 @@
+
+
+/* MAIN STYLES FOR THIS APPLICATION */
+
+
+// IMPORTS
+@import "../../../styles/less/bootstrap/bootstrap.less";
+@import "../../../styles/less/_material-effect.less";
+@import "_notifyr.less";
+@import "_mixins.less";
+@import "_footer.less";
+
+
+// CUSTOM VARIABLES
+@primaryColor: #8e44ad;
+@altColor: #2980b9;
+@primaryGradient: linear-gradient(90deg, @primaryColor, darken(@primaryColor, 10%));
+@primaryGradient2: linear-gradient(90deg, @primaryColor, darken(@primaryColor, 5%));
+@altGradient: radial-gradient(500px at 30% 50%, fade(@altColor, 30%), @primaryColor);
+@altGradient2: radial-gradient(200px at 80% 50%, fade(@altColor, 50%), @primaryColor);
+@fontColor: #ecf0f1;
+
+
+// CUSTOM MIXINS
+.SimpleGradient(@color: @primaryColor, @deg: 90deg) {
+	background-color: @color !important;
+	.linear(@deg, @color, darken(@color, 10%));
+}
+
+.LinearGradient(@color: @primaryColor, @color2: @altColor, @deg: 90deg) {
+	background-color: @color !important;
+	.linear(@deg, @color, @color2);
+}
+
+* {
+//	letter-spacing: .5pt;
+}
+
+// START OF STYLING
+.navbar-inverse {
+	background-color: @primaryColor;
+	background-image: @altGradient, @altGradient2;
+	color: @fontColor;
+	border: none;
+	border-radius: 0;
+	
+	
+	// styles for the branding or main link
+	.navbar-brand {
+		transition: .3s;
+		&:hover, &:focus {
+			background-color: darken(@primaryColor, 8%);
+			.rgba(black, 20%);
+		}
+		img {
+			height: 16pt;
+		}
+	}
+	// styles for the navigation links
+	.navbar-nav {
+		a {
+			cursor: pointer;
+		}
+		
+		li {
+			&.active > a {
+				background-color: darken(@primaryColor, 8%);
+				.rgba(#000, 20%);
+				&:hover, &:focus {
+					background-color: darken(@primaryColor, 8%);
+					.rgba(#000, 20%);
+				}
+			}
+			a {
+				transition: .3s;
+				&:hover, &:focus {
+					color: white;
+					background-color: darken(@primaryColor, 8%);
+					.rgba(#000, 20%);
+				}
+			}
+			
+			.top-user-menu:hover, .top-user-menu:focus, .top-user-menu:selected,
+			.open .top-user-menu, .open .top-user-menu:hover,
+			.open .top-user-menu:focus, .open .top-user-menu:selected {
+				background-color: darken(@primaryColor, 8%);
+				.rgba(#000, 20%);
+			}
+		}
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: darken(@primaryColor, 8%);
+  			.rgba(#000, 20%);
+      }
+    }
+    .dropdown-menu {
+      background-color: darken(@primaryColor, 8%);
+      border: 0;
+    }
+	}
+}
+
+.module-icon {
+	display: block;
+	border-radius: 5px;
+	overflow: auto;
+		
+	&:hover, &:focus {
+		background: #f0f0f8;
+		cursor: pointer;
+		text-decoration: none;
+	}
+	
+	p {
+		color: #555;
+		text-align: center;
+	}
+}
+
+.btn {
+	transition: .3s;
+}
+
+.list-group-item {
+	&:hover, &:focus, &:selected {
+		.SimpleGradient(fade(@primaryColor, 10%));
+	}
+	
+	&.active, &.active:hover, &.active:focus {
+		.LinearGradient(lighten(@primaryColor, 10%), fade(@altColor, 30%));
+		border-color: darken(@primaryColor, 5%) !important;
+	}
+	
+	&.selected {
+		.SimpleGradient(fade(@primaryColor, 5%));
+	}
+}
+
+.btn-primary {
+	.SimpleGradient(@primaryColor);
+	.border-radius( 3px );
+	border: none !important;
+	
+	&:hover, &:focus {
+		.LinearGradient(lighten(@primaryColor, 10%), fade(@altColor, 30%));
+	}
+}
+
+.form-control:focus {
+	@shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px fade(@primaryColor, 75%);
+	.box-shadow(@shadow);
+	border-color: fade(@altColor, 30%);
+}
+
+

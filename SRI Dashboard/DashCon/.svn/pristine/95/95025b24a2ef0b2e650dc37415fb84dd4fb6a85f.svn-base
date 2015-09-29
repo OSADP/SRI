@@ -1,0 +1,117 @@
+package sri.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import sri.data.WeightReport;
+
+public class WeightReportDaoImpl implements WeightReportDao {
+	
+	SqlSessionFactory sqlMapper = MyBatisConnectionFactory.getSqlSessionFactory();
+	SqlSession session = null;
+
+	
+	@Override
+	public List<WeightReport> getAllWeightReports() {
+		session = sqlMapper.openSession(true);
+		List<WeightReport> wr = null;
+		try {
+			wr = session.selectList("sri.mapper.WeightReport.listAllWeightReports");
+		} finally {
+			session.close();
+		}
+		return wr;
+	}
+
+	@Override
+	public WeightReport getWeightReport(Integer sequenceNumber) {
+		session = sqlMapper.openSession(true);
+		WeightReport wr = null;
+		try {
+			wr = session.selectOne("sri.mapper.WeightReport.getWeightReport", sequenceNumber);
+		} finally {
+			session.close();
+		}
+		return wr;
+	}
+
+	@Override
+	public List<WeightReport> listAllWimReports() {
+		session = sqlMapper.openSession(true);
+		List<WeightReport> wr = null;
+		try {
+			wr = session.selectList("sri.mapper.WeightReport.listAllWimReports");
+		} finally {
+			session.close();
+		}
+		return wr;
+	}
+
+	@Override
+	public List<WeightReport> listAllStaticScaleReports() {
+		session = sqlMapper.openSession(true);
+		List<WeightReport> wr = null;
+		try {
+			wr = session.selectList("sri.mapper.WeightReport.listAllStaticScaleReports");
+		} finally {
+			session.close();
+		}
+		return wr;
+	}
+
+	@Override
+	public void insertNewWeightReport(WeightReport wr) {
+		session = sqlMapper.openSession(true);
+		try {
+			session.insert("sri.mapper.WeightReport.insertWeightReport", wr);
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public WeightReport getWeight(String timestamp) {
+		session = sqlMapper.openSession(true);
+		WeightReport wr = null;
+		try {
+			wr = session.selectOne("sri.mapper.WeightReport.getWeight", timestamp);
+		} finally {
+			session.close();
+		}
+		return wr;
+	}
+
+	@Override
+	public WeightReport getStaticWeight(String timestamp, Integer sequenceNumber, Integer siteId) {
+		session = sqlMapper.openSession(true);
+		WeightReport wr = null;
+		try {
+			WeightReport twr = new WeightReport();
+			twr.setSiteId(siteId);
+			twr.setTimestamp(timestamp);
+			twr.setSequenceNumber(sequenceNumber);
+			wr = session.selectOne("sri.mapper.WeightReport.getStaticWeight", twr);
+		} finally {
+			session.close();
+		}
+		return wr;
+	}
+
+	@Override
+	public WeightReport getWimWeight(String timestamp, Integer sequenceNumber, Integer siteId) {
+		session = sqlMapper.openSession(true);
+		WeightReport wr = null;
+		try {
+			WeightReport twr = new WeightReport();
+			twr.setSiteId(siteId);
+			twr.setTimestamp(timestamp);
+			twr.setSequenceNumber(sequenceNumber);
+			wr = session.selectOne("sri.mapper.WeightReport.getWimWeight", twr);
+		} finally {
+			session.close();
+		}
+		return wr;
+	}
+}

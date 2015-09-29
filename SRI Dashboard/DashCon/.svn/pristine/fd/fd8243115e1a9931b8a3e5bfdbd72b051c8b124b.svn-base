@@ -1,0 +1,27 @@
+/*
+ * author:	Robert Roth
+ * desc:	Controller for editting of user accounts.
+ * params:
+ *			$scope 	- this is the scope of the controller.
+ * 			$http 	- provides http requests.
+ * 			$state 	- provides page state properties and functions.
+ * 			user		- a resolved user loaded from our API.
+ */
+function EditUserCTRL( $scope, $http, $state, user ) {
+	// Assign the resolved user data to our scope
+	$scope.user = user;
+	
+	// Methods:
+	// Sends a PUT request to update our user
+	$scope.updateUser = function() {
+		$http.put('/DashCon/resources/user', $scope.user)
+			.success(function(data, status, headers, config) {
+				alert('Update success!');
+			})
+			.error(function(data, status, headers, config) {
+				console.log(status);
+				console.log(headers());
+				console.log(config);
+			});
+	}
+}
