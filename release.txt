@@ -1,1 +1,50 @@
-test
+SRI RELEASE-NOTES
+
+- SRI, 9-30-15, Version 1.0
+
+- What's New: N/A
+
+- System Requirements: 
+* Android
+  - Android Development Studio
+  - Java JDK 1.7
+  - SRI Web Services
+	
+* Android Bluetooth
+  - Android Development Studio
+  - Java JDK 1.7
+
+* DashCon
+  - Java JDK 1.7
+  - Eclipse Luna
+  - GlassFish 3.1
+  - MySQL 5.6
+
+* SRI J2735 Translator
+  - Java JDK 1.7
+  - SRI Web Services
+
+* Aspen2eCitation
+  - .NET Framework 4.5
+  - Aspen 3.0
+  - eCitation
+
+* LprWindowsXpClient
+  - .NET Framework 4.5
+  - ELSAG LRP reader
+  - SRI Web Services
+
+- Features and changes: See Read Me
+
+- Outstanding issues (unresolved defects, workarounds, installation issues 
+etc)
+
+- Installation guide: N/A
+
+- Known Issues: N/A
+
+- Troubleshooting: N/A
+
+- FAQ: N/A
+
+- Other Resources and Links: N/A
