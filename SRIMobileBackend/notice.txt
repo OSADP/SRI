@@ -1,0 +1,7 @@
+Required Jars
+* binarynotes.jar
+* commons-io-2.4.jar
+* commons-logging.jar
+* httpclient-4.5.jar
+* httpcore-4.4.1.jar
+* log4j-1.2.15.jar
