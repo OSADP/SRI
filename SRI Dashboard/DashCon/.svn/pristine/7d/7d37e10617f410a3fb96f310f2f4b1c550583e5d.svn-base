@@ -1,4 +1,0 @@
-#Quartz Trigger for every 3 minutes
-leidos.safer.crontrigger=0 0/3 * * * ?
-#Quartz Trigger for Midnight
-#leidos.safer.crontrigger=0 0 0 * * ?
