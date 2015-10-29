@@ -1,9 +1,0 @@
-Required packages obtainable from the NuGet Package Manager
-* EntityFramework.6.0.2
-* EntityFramework.Firebird.4.6.4.0
-* FirebirdSql.Data.FirebirdClient.4.5.2.0
-
-Required commercial dll needed to communicate with iyeTek Software
-iyeTek.LEMSFramework.ClientAPI.dll
-
-Contact iyeTek for assistance in obtaining dll.  http://www.iyetek.com/contactus.php
