@@ -1,0 +1,20 @@
+SRI
+Required Jars
+* androlog-1.0.0.jar
+* binarynotes.jar
+* commons-io-2.4.jar
+* disklrucache-2.0.3-SNAPSHOT.jar
+* gson-2.3.1.jar
+* gson-2.3.2-SNAPSHOT.jar
+* okhttp-2.4.0.jar
+* okio-1.4.0.jar
+
+SRI-Bluetooth
+Required Jars
+* androlog-1.0.0.jar
+* binarynotes.jar
+* commons-io-2.4.jar
+* disklrucache-2.0.3-SNAPSHOT.jar
+* gson-2.3.1.jar
+* polygon.jar
+* resevoir.jar
