@@ -1,7 +1,21 @@
-Required Jars
-* binarynotes.jar
+Required Jars for the WEB-INF dir
+* asm-all-3.3.1.jar
 * commons-io-2.4.jar
+* commons-lang-2.6.jar
 * commons-logging.jar
-* httpclient-4.5.jar
-* httpcore-4.4.1.jar
+* jersey-bundle-1.18.jar
+* jsoup-1.8.2.jar
 * log4j-1.2.15.jar
+* mybatis-3.2.4.jar
+* mysql-connector-java-5.1.29-bin.jar
+* org.springframework.asm-3.1.0.M1.jar
+* org.springframework.beans-3.1.0.M1.jar
+* org.springframework.context.support-3.1.0.M1.jar
+* org.springframework.context-3.1.0.M1.jar
+* org.springframework.core-3.1.0.M1.jar
+* org.springframework.expression-3.1.0.M1.jar
+* org.springframework.transaction-3.1.0.M1.jar
+* org.springframework.web-3.1.0.M1.jar
+* quartz-all-1.8.5.jar
+* slf4j-api-1.5.0.jar
+* slf4j-log4j12-1.5.0.jar
