@@ -52,7 +52,7 @@ CREATE TABLE `company_data` (
 
 LOCK TABLES `company_data` WRITE;
 /*!40000 ALTER TABLE `company_data` DISABLE KEYS */;
-INSERT INTO `company_data` VALUES ('2465358','TWO MEN AND A TRUCK OF BOYNTON DELRAY','8','--',' Carrier ','W & W MOVING SOLUTIONS LLC',' 130 LANSING IS DR INDIAN HARBOUR BEACH, FL  32937 ',' MC-852029 ','10/06/2014','20,000 (2014)',' AUTHORIZED FOR HHG ',' None ','(561) 404-8807',' 1515 N CONGRESS AVE DELRAY BEACH, FL  33445 ','6','',NULL);
+INSERT INTO `company_data` VALUES ('2465358','TWO MEN AND A TRUCK OF BOYNTON DELRAY','8','--',' Carrier ','W & W MOVING SOLUTIONS LLC',' 130 LANSING IS DR INDIAN HARBOUR BEACH, FL  32937 ',' MC-852029 ','10/06/2014','20,000 (2014)',' AUTHORIZED FOR HHG ',' None ','(561) 404-8807',' 1515 N CONGRESS AVE DELRAY BEACH, FL  33445 ','6','',NULL),('7437','','','--',' Carrier ','TANAHILL TRKG',' 1518 W 5 FRIONA, TX  79035-2208 ',' ','08/13/2001','0 ()',' ACTIVE ',' None ','',' BOX 902 FRIONA, TX  79035 ','0','',NULL),('7646','','40','11-013-406 ',' Carrier ','SCHAGRIN GAS CO',' PO BOX 427 MIDDLETOWN, DE  19709-0427 ',' ','01/27/2014','456,811 (2013)',' ACTIVE ',' None ','(302) 378-2000',' 1000 N BROAD ST MIDDLETOWN, DE  19709-1069 ','70','',NULL);
 /*!40000 ALTER TABLE `company_data` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,7 +80,7 @@ CREATE TABLE `crash_data` (
 
 LOCK TABLES `crash_data` WRITE;
 /*!40000 ALTER TABLE `crash_data` DISABLE KEYS */;
-INSERT INTO `crash_data` VALUES ('2465358','CAN','0','0','0','0'),('2465358','USA','0','0','0','0');
+INSERT INTO `crash_data` VALUES ('2465358','CAN','0','0','0','0'),('2465358','USA','0','0','0','0'),('7437','CAN','0','0','0','0'),('7437','USA','0','0','0','0'),('7646','CAN','0','0','0','0'),('7646','USA','0','0','2','2');
 /*!40000 ALTER TABLE `crash_data` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -289,6 +289,7 @@ CREATE TABLE `inspection` (
 
 LOCK TABLES `inspection` WRITE;
 /*!40000 ALTER TABLE `inspection` DISABLE KEYS */;
+INSERT INTO `inspection` VALUES ('IL1234000001','2014-11-20','09:41:17','2014-11-20','09:46:38',5,'1','CT','TEST','TEST','TEST','TEST','R','IL','SAINT CLAIR','163',NULL,'1138','LUKE SKYWALKER',NULL,NULL,'N','N',NULL,'N','N','N','X','00000004',NULL,NULL,NULL,'Y','CONSOLIDATED GRANITE CO INC','P O BOX 765',NULL,'ELBERTON','GA','30635-0765','(706)283-5463',NULL,NULL,NULL,'DOE','JOHN',NULL,'1234','IL','1971-05-12',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,0,'3','0','1','1','0','0','0','N',NULL,'N','N','TEMP','I','3.0','C','F','2015-03-27','08:52:57',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'US','F','N','US',NULL,NULL,NULL,NULL,NULL,'N',NULL,0,0,0,'N',NULL,NULL,NULL,'N',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `inspection` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -317,8 +318,37 @@ CREATE TABLE `inspection_data` (
 
 LOCK TABLES `inspection_data` WRITE;
 /*!40000 ALTER TABLE `inspection_data` DISABLE KEYS */;
-INSERT INTO `inspection_data` VALUES ('2465358','CAN',1,'0',NULL,NULL,'0'),('2465358','CAN',3,'0',NULL,NULL,'0'),('2465358','CAN',4,' 0% ',NULL,NULL,' 0% '),('2465358','USA',1,'13','0','0','10'),('2465358','USA',2,'5.51%','4.50%','N/A','20.72%'),('2465358','USA',3,'1','0','0','0'),('2465358','USA',4,' 7.7% ',' % ',' 0% ',' 0% ');
+INSERT INTO `inspection_data` VALUES ('2465358','CAN',1,'0',NULL,NULL,'0'),('2465358','CAN',3,'0',NULL,NULL,'0'),('2465358','CAN',4,' 0% ',NULL,NULL,' 0% '),('2465358','USA',1,'13','0','0','10'),('2465358','USA',2,'5.51%','4.50%','N/A','20.72%'),('2465358','USA',3,'1','0','0','0'),('2465358','USA',4,' 7.7% ',' % ',' 0% ',' 0% '),('7437','CAN',1,'0',NULL,NULL,'0'),('7437','CAN',3,'0',NULL,NULL,'0'),('7437','CAN',4,' 0% ',NULL,NULL,' 0% '),('7437','USA',1,'0','0','0','0'),('7437','USA',2,'5.51%','4.50%','N/A','20.72%'),('7437','USA',3,'0','0','0','0'),('7437','USA',4,' 0% ',' 0% ',' 0% ',' 0% '),('7646','CAN',1,'0',NULL,NULL,'0'),('7646','CAN',3,'0',NULL,NULL,'0'),('7646','CAN',4,' 0% ',NULL,NULL,' 0% '),('7646','USA',1,'38','32','0','37'),('7646','USA',2,'5.51%','4.50%','N/A','20.72%'),('7646','USA',3,'0','0','0','0'),('7646','USA',4,' 0% ',' 0% ',' 0% ',' 0% ');
 /*!40000 ALTER TABLE `inspection_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lpr`
+--
+
+DROP TABLE IF EXISTS `lpr`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lpr` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `site_id` int(11) NOT NULL,
+  `file_name` varchar(45) NOT NULL,
+  `sequence_number` int(11) DEFAULT NULL,
+  `license_plate_number` varchar(45) DEFAULT NULL,
+  `state` varchar(2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lpr`
+--
+
+LOCK TABLES `lpr` WRITE;
+/*!40000 ALTER TABLE `lpr` DISABLE KEYS */;
+INSERT INTO `lpr` VALUES (53,'2015-09-24 16:07:12',2,'lp0.jpg',0,'193419',NULL),(54,'2015-09-24 16:07:22',2,'lp1.jpg',1,'190420',NULL),(55,'2015-09-24 16:07:26',2,'lp2.jpg',2,'186630',NULL),(56,'2015-09-24 16:07:35',2,'lp3.jpg',3,'191594',NULL),(57,'2015-09-24 16:07:39',2,'lp4.jpg',4,'188572',NULL),(58,'2015-09-24 16:07:43',2,'lp5.jpg',5,'188436',NULL),(59,'2015-09-24 16:07:52',2,'lp6.jpg',6,'190615',NULL),(60,'2015-09-24 16:07:56',2,'lp7.jpg',7,'191396',NULL),(61,'2015-09-24 16:08:00',2,'lp8.jpg',8,'189857',NULL),(62,'2015-09-24 16:08:05',2,'lp9.jpg',9,'191421',NULL);
+/*!40000 ALTER TABLE `lpr` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -344,7 +374,7 @@ CREATE TABLE `safety_rating` (
 
 LOCK TABLES `safety_rating` WRITE;
 /*!40000 ALTER TABLE `safety_rating` DISABLE KEYS */;
-INSERT INTO `safety_rating` VALUES ('2465358','None ','None ','None ','None ');
+INSERT INTO `safety_rating` VALUES ('2465358','None ','None ','None ','None '),('7437','None ','None ','None ','None '),('7646','None ','None ','05/14/2004','Non-Ratable ');
 /*!40000 ALTER TABLE `safety_rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -438,8 +468,11 @@ DROP TABLE IF EXISTS `truck_feed`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `truck_feed` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `timestamp` datetime NOT NULL,
   `date_created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `timestamp` datetime NOT NULL,
+  `approach_entered` datetime DEFAULT NULL,
+  `wim_entered` datetime DEFAULT NULL,
+  `wim_left` datetime DEFAULT NULL,
   `site_id` int(11) NOT NULL,
   `sequence_number` int(11) DEFAULT NULL,
   `license_plate` varchar(45) NOT NULL,
@@ -450,9 +483,11 @@ CREATE TABLE `truck_feed` (
   `usdot_number` varchar(45) NOT NULL,
   `latitude` decimal(10,8) NOT NULL,
   `longitude` decimal(11,8) NOT NULL,
+  `mobile_app_version` varchar(10) DEFAULT NULL,
+  `status` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -461,7 +496,7 @@ CREATE TABLE `truck_feed` (
 
 LOCK TABLES `truck_feed` WRITE;
 /*!40000 ALTER TABLE `truck_feed` DISABLE KEYS */;
-INSERT INTO `truck_feed` VALUES (31,'2015-04-24 11:33:43','2015-04-24 11:33:49',1,5235,'190693',NULL,NULL,'FL342','US7606','3654',38.58515800,-89.92731000),(32,'2015-04-24 11:33:51','2015-04-24 11:33:51',1,3969,'192823',NULL,NULL,'FL6173','US9696','2021',38.58515800,-89.92731000),(33,'2015-04-24 11:33:53','2015-04-24 11:33:53',1,5819,'192763',NULL,NULL,'FL2670','US4099','8596',38.58515800,-89.92731000),(34,'2015-04-24 11:33:55','2015-04-24 11:33:55',1,4192,'190680',NULL,NULL,'FL4305','US3319','711',38.58515800,-89.92731000),(35,'2015-04-24 11:33:57','2015-04-24 11:33:57',1,3094,'194569',NULL,NULL,'FL2606','US723','6905',38.58515800,-89.92731000),(36,'2015-04-24 11:33:58','2015-04-24 11:33:59',1,947,'185177',NULL,NULL,'FL2867','US147','7909',38.58515800,-89.92731000),(37,'2015-04-24 11:34:00','2015-04-24 11:34:01',1,7565,'189188',NULL,NULL,'FL3607','US1089','917',38.58515800,-89.92731000),(38,'2015-04-24 11:34:02','2015-04-24 11:34:02',1,8862,'193076',NULL,NULL,'FL4190','US2920','1574',38.58515800,-89.92731000),(39,'2015-04-24 11:34:04','2015-04-24 11:34:04',1,25,'190786',NULL,NULL,'FL8244','US739','1534',38.58515800,-89.92731000),(40,'2015-04-24 11:34:06','2015-04-24 11:34:06',1,2097,'191840',NULL,NULL,'FL3966','US7010','6632',38.58515800,-89.92731000),(41,'2015-04-29 11:02:16','2015-04-29 11:02:17',1,8970,'190161',NULL,NULL,'FL535','US830','6730',38.58515800,-89.92731000),(42,'2015-04-29 11:02:18','2015-04-29 11:02:18',1,9622,'189767',NULL,NULL,'FL6023','US1750','8386',38.58515800,-89.92731000),(43,'2015-04-29 11:02:20','2015-04-29 11:02:20',1,6765,'185588',NULL,NULL,'FL9459','US2166','3929',38.58515800,-89.92731000),(44,'2015-04-29 11:02:22','2015-04-29 11:02:22',1,5021,'188207',NULL,NULL,'FL6973','US3371','1134',38.58515800,-89.92731000),(45,'2015-04-29 11:02:23','2015-04-29 11:02:23',1,7728,'189685',NULL,NULL,'FL4743','US8414','8952',38.58515800,-89.92731000),(46,'2015-04-29 11:02:25','2015-04-29 11:02:25',1,583,'187854',NULL,NULL,'FL2358','US8346','6108',38.58515800,-89.92731000),(47,'2015-04-29 11:02:27','2015-04-29 11:02:27',1,4645,'192541',NULL,NULL,'FL7908','US6783','1017',38.58515800,-89.92731000),(48,'2015-04-29 11:02:28','2015-04-29 11:02:28',1,4074,'185901',NULL,NULL,'FL7302','US9259','5915',38.58515800,-89.92731000),(49,'2015-04-29 11:02:30','2015-04-29 11:02:30',1,9685,'188477',NULL,NULL,'FL7487','US7317','1861',38.58515800,-89.92731000),(50,'2015-04-29 11:02:31','2015-04-29 11:02:31',1,6321,'192905',NULL,NULL,'FL256','US6802','5248',38.58515800,-89.92731000),(51,'2015-05-01 12:20:26','2015-05-01 12:20:43',1,1138,'185804',NULL,NULL,'FL4752','US1346','6667',1.00000000,1.00000000),(52,'2015-05-01 12:20:49','2015-05-01 12:20:50',1,421,'187645',NULL,NULL,'FL2840','US3095','3176',1.00000000,1.00000000),(53,'2015-05-01 12:20:59','2015-05-01 12:21:00',1,555,'186437',NULL,NULL,'FL6219','US2071','6445',1.00000000,1.00000000);
+INSERT INTO `truck_feed` VALUES (20,'2015-09-24 11:07:16','2015-09-24 11:07:20','2015-09-24 11:07:16','2015-09-24 11:07:18','2015-09-24 11:07:21',2,1,'190420',NULL,NULL,'FL9567','US4011','2465358',1.00000000,1.00000000,'1.1.8','F'),(21,'2015-09-24 11:07:29','2015-09-24 11:07:33','2015-09-24 11:07:29','2015-09-24 11:07:31','2015-09-24 11:07:34',2,3,'191594',NULL,NULL,'FL53','US3016','7437',1.00000000,1.00000000,'1.1.6','F'),(22,'2015-09-24 11:07:46','2015-09-24 11:07:51','2015-09-24 11:07:46','2015-09-24 11:07:49','2015-09-24 11:07:51',2,6,'190615',NULL,NULL,'FL8653','US7695','7646',1.00000000,1.00000000,'1.1.8','P');
 /*!40000 ALTER TABLE `truck_feed` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -493,6 +528,34 @@ INSERT INTO `truck_weight` VALUES (1,1418920589,20540),(2,1418920597,22156),(3,1
 UNLOCK TABLES;
 
 --
+-- Table structure for table `usdot_number`
+--
+
+DROP TABLE IF EXISTS `usdot_number`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usdot_number` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `usdot_number` varchar(45) NOT NULL,
+  `sequence_number` varchar(45) NOT NULL,
+  `manual_entered` tinyint(1) DEFAULT '0',
+  `user_id` varchar(45) DEFAULT NULL,
+  `site_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usdot_number`
+--
+
+LOCK TABLES `usdot_number` WRITE;
+/*!40000 ALTER TABLE `usdot_number` DISABLE KEYS */;
+INSERT INTO `usdot_number` VALUES (31,'7646','5',0,NULL,2),(32,'2465358','1',0,NULL,2),(33,'7437','3',0,NULL,2),(34,'7646','6',0,NULL,2);
+/*!40000 ALTER TABLE `usdot_number` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -507,6 +570,7 @@ CREATE TABLE `user` (
   `EMAIL` varchar(45) NOT NULL,
   `USER_PASSWORD` varchar(255) NOT NULL,
   `CREATE_DATE` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `SITE_ID` varchar(45) NOT NULL,
   PRIMARY KEY (`USER_ID`),
   UNIQUE KEY `EMAIL_UNIQUE` (`EMAIL`),
   UNIQUE KEY `USER_ID_UNIQUE` (`USER_ID`),
@@ -521,7 +585,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('aasdsad','rothattack2','Some LastName','IL','rothattack@gmail.net','a3a998437edd1f176919c38a34f6d202d03ade4d216f05638e99651623d05a2a','2015-04-17 15:06:20'),('aoisud','asdou','saoiud','IL','k@k.com','b7ed510eeecbe7fae9442a42133a72dc1bc64d718c52e9b0cb355927c9260a83','2015-04-17 15:06:20'),('asdsadsa','asd','asd','IL','asd@aasd','901cbba93dcb0392ea555deb8a5ec66b61da678ff6be10efa0cd0033a2561b7','2015-04-17 15:06:20'),('asdsadsadsd','asdsa','dsasd','IL','a!@asd','d4d9f06eeffd45e80fbd584a74e21ba0b4d19b8a1d71b06ed254c672d4293fcb','2015-04-17 15:06:20'),('chuckerin','Chuckerin','Black','IL','chuckerin@gmail.com','28efb68dcba507ecd182bead31e4e2d159b0f9185861d1ebfe60a12dfb310300','2015-04-17 15:06:20'),('chuckerin2','Chuckerin','Black','MD','chuck@leidos.com','28efb68dcba507ecd182bead31e4e2d159b0f9185861d1ebfe60a12dfb310300','2015-04-17 15:06:20'),('dsaf','asd','asd','IL','asd@a','da0965c2fb8efc50db927e365d623867d740e107837485ac08c4157fc9babb4e','2015-04-17 15:06:20'),('dsasd1','asdsa','asdsa','IL','a@a','3ebed201e428e87967f402d6586a98bf64af5b9a0cb651e34838a937acbd2288','2015-04-17 15:06:20'),('finn','Finn','Human','IL','a@a.com','5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8','2015-04-17 15:06:20'),('human','Hu','Man','AL','hu@man.com','2fd1f0e988b628e256f2504122c5e9b8921d0b69e4a67de31015f90fcb658c7','2015-04-17 15:06:20'),('humanz','hu','man','AL','a@1a.com','e63c7ecf63dccdc1c277405fca0627de9af4b3270b47aa242e9a2d9bc5fccc4d','2015-04-17 15:06:20'),('jedi','Luke','Skywalker','IL','blackch@leidos.com','5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8','2015-04-17 15:06:20'),('jedi1','Phil','Black','AL','chuckerin.black@gmail.com','28efb68dcba507ecd182bead31e4e2d159b0f9185861d1ebfe60a12dfb310300','2015-04-17 15:06:20'),('jedi2','Phil','Black','AL','chuckerin1@gmail.com','5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8','2015-04-17 15:06:20'),('mtsri','Dan','Benedum','OH','Dan.Benedum@mt.com','5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8','2015-04-17 15:06:20'),('newUserID','User','Uber','AL','rothattack@gmail.c','b1fedb324c9aeef6c6f2c3b4b50832b404546719995d94b8e91b655939659e1b','2015-04-17 15:06:20'),('rothattack','Robert','Roth','IL','rothattack@gmail.com','5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8','2015-04-17 15:06:20');
+INSERT INTO `user` VALUES ('aasdsad','rothattack2','Some LastName','IL','rothattack@gmail.net','a3a998437edd1f176919c38a34f6d202d03ade4d216f05638e99651623d05a2a','2015-04-17 15:06:20','1'),('aoisud','asdou','saoiud','IL','k@k.com','b7ed510eeecbe7fae9442a42133a72dc1bc64d718c52e9b0cb355927c9260a83','2015-04-17 15:06:20','1'),('asdsadsa','asd','asd','IL','asd@aasd','901cbba93dcb0392ea555deb8a5ec66b61da678ff6be10efa0cd0033a2561b7','2015-04-17 15:06:20','1'),('asdsadsadsd','asdsa','dsasd','IL','a!@asd','d4d9f06eeffd45e80fbd584a74e21ba0b4d19b8a1d71b06ed254c672d4293fcb','2015-04-17 15:06:20','1'),('chuckerin','Chuckerin','Black','IL','chuckerin@gmail.com','5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8','2015-04-17 15:06:20','2'),('chuckerin2','Chuckerin','Black','MD','chuck@leidos.com','5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8','2015-04-17 15:06:20','-1'),('dsaf','asd','asd','IL','asd@a','da0965c2fb8efc50db927e365d623867d740e107837485ac08c4157fc9babb4e','2015-04-17 15:06:20','1'),('dsasd1','asdsa','asdsa','IL','a@a','3ebed201e428e87967f402d6586a98bf64af5b9a0cb651e34838a937acbd2288','2015-04-17 15:06:20','1'),('finn','Finn','Human','IL','a@a.com','5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8','2015-04-17 15:06:20','1'),('human','Hu','Man','AL','hu@man.com','2fd1f0e988b628e256f2504122c5e9b8921d0b69e4a67de31015f90fcb658c7','2015-04-17 15:06:20','1'),('humanz','hu','man','AL','a@1a.com','e63c7ecf63dccdc1c277405fca0627de9af4b3270b47aa242e9a2d9bc5fccc4d','2015-04-17 15:06:20','1'),('jedi','Luke','Skywalker','IL','blackch@leidos.com','5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8','2015-04-17 15:06:20','1'),('jedi1','Phil','Black','AL','chuckerin.black@gmail.com','28efb68dcba507ecd182bead31e4e2d159b0f9185861d1ebfe60a12dfb310300','2015-04-17 15:06:20','1'),('jedi2','Phil','Black','AL','chuckerin1@gmail.com','5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8','2015-04-17 15:06:20','1'),('mtsri','Dan','Benedum','OH','Dan.Benedum@mt.com','5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8','2015-04-17 15:06:20','1'),('newUserID','User','Uber','AL','rothattack@gmail.c','b1fedb324c9aeef6c6f2c3b4b50832b404546719995d94b8e91b655939659e1b','2015-04-17 15:06:20','1'),('rothattack','Robert','Roth','IL','rothattack@gmail.com','5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8','2015-04-17 15:06:20','1');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -592,6 +656,7 @@ CREATE TABLE `vehicle` (
 
 LOCK TABLES `vehicle` WRITE;
 /*!40000 ALTER TABLE `vehicle` DISABLE KEYS */;
+INSERT INTO `vehicle` VALUES ('IL1234000001','1','BU','ABCC','2014',NULL,'TEMP','IL','123456',0,'N',NULL,NULL,NULL,'N',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `vehicle` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -635,7 +700,7 @@ CREATE TABLE `weight_report` (
   `mass_unit` varchar(1) NOT NULL,
   `status` varchar(1) NOT NULL,
   `reason` varchar(255) DEFAULT NULL,
-  `create_date` datetime DEFAULT CURRENT_TIMESTAMP
+  `date_created` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Test table for Metler-Toledo API';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -645,7 +710,7 @@ CREATE TABLE `weight_report` (
 
 LOCK TABLES `weight_report` WRITE;
 /*!40000 ALTER TABLE `weight_report` DISABLE KEYS */;
-INSERT INTO `weight_report` VALUES (1,'W','2015-04-16 13:53:27',189023,7,43000,'P','F','The truck failed the scale test.','2015-04-17 15:00:17'),(1,'W','2015-04-16 13:53:30',1138,4,42000,'P','F','The truck failed the scale test.','2015-04-17 15:00:17'),(1,'W','2015-04-16 13:53:32',191947,3,43000,'P','F','The truck failed the scale test.','2015-04-17 15:00:17'),(1,'W','2015-04-16 13:53:33',421,4,35000,'P','F','The truck failed the scale test.','2015-04-17 15:00:17'),(1,'W','2015-04-16 13:53:35',185276,6,36000,'P','F','The truck failed the scale test.','2015-04-17 15:00:17'),(1,'S','2015-04-16 13:53:37',1138,8,24000,'P','P','The truck passed the scale test.','2015-04-17 15:00:17'),(1,'W','2015-04-16 13:53:39',188867,8,34000,'P','F','The truck failed the scale test.','2015-04-17 15:00:17'),(1,'W','2015-04-16 13:53:41',191224,8,26000,'P','P','The truck passed the scale test.','2015-04-17 15:00:17'),(1,'S','2015-04-16 13:53:42',421,8,42000,'P','F','The truck failed the scale test.','2015-04-17 15:00:17'),(1,'W','2015-04-16 13:53:44',191266,6,42000,'P','F','The truck failed the scale test.','2015-04-17 15:00:17'),(6,'W','2015-04-17 14:57:32',188079,6,24000,'P','P','The truck passed the scale test.','2015-04-17 15:00:17'),(6,'W','2015-04-17 14:57:42',1138,3,22000,'P','P','The truck passed the scale test.','2015-04-17 15:00:17'),(6,'W','2015-04-17 14:57:44',194645,5,35000,'P','F','The truck failed the scale test.','2015-04-17 15:00:17'),(6,'W','2015-04-17 14:57:46',421,4,25000,'P','P','The truck passed the scale test.','2015-04-17 15:00:17'),(6,'W','2015-04-17 14:57:48',191970,4,33000,'P','F','The truck failed the scale test.','2015-04-17 15:00:17'),(6,'S','2015-04-17 14:57:50',1138,5,33000,'P','F','The truck failed the scale test.','2015-04-17 15:00:17'),(6,'W','2015-04-17 14:57:52',189664,6,39000,'P','F','The truck failed the scale test.','2015-04-17 15:00:17'),(6,'W','2015-04-17 14:57:53',191630,6,23000,'P','P','The truck passed the scale test.','2015-04-17 15:00:17'),(6,'S','2015-04-17 14:57:55',421,5,31000,'P','P','The truck passed the scale test.','2015-04-17 15:00:17'),(6,'W','2015-04-17 14:57:57',191959,5,45000,'P','F','The truck failed the scale test.','2015-04-17 15:00:17'),(6,'W','2015-04-17 15:01:13',190002,4,22000,'P','P','The truck passed the scale test.','2015-04-17 15:01:14'),(6,'W','2015-04-17 15:01:16',1138,3,44000,'P','F','The truck failed the scale test.','2015-04-17 15:01:16'),(6,'W','2015-04-17 15:01:18',187293,7,41000,'P','F','The truck failed the scale test.','2015-04-17 15:01:18'),(6,'W','2015-04-17 15:01:19',421,7,28000,'P','P','The truck passed the scale test.','2015-04-17 15:01:20'),(6,'W','2015-04-17 15:01:21',194318,4,30000,'P','P','The truck passed the scale test.','2015-04-17 15:01:22'),(6,'S','2015-04-17 15:01:23',1138,8,23000,'P','P','The truck passed the scale test.','2015-04-17 15:01:23'),(6,'W','2015-04-17 15:01:25',185772,6,29000,'P','P','The truck passed the scale test.','2015-04-17 15:01:25'),(6,'W','2015-04-17 15:01:27',193992,3,38000,'P','F','The truck failed the scale test.','2015-04-17 15:01:27'),(6,'S','2015-04-17 15:01:29',421,3,34000,'P','F','The truck failed the scale test.','2015-04-17 15:01:29'),(6,'W','2015-04-17 15:01:30',188132,4,28000,'P','P','The truck passed the scale test.','2015-04-17 15:01:31'),(6,'W','2015-04-20 12:45:55',187699,5,34000,'P','F','The truck failed the scale test.','2015-04-20 12:45:56'),(6,'W','2015-04-20 12:45:59',1138,7,29000,'P','P','The truck passed the scale test.','2015-04-20 12:45:59'),(6,'W','2015-04-20 12:46:01',186383,8,42000,'P','F','The truck failed the scale test.','2015-04-20 12:46:02'),(6,'W','2015-04-20 12:46:04',421,8,37000,'P','F','The truck failed the scale test.','2015-04-20 12:46:04'),(6,'W','2015-04-20 12:46:06',194214,3,28000,'P','P','The truck passed the scale test.','2015-04-20 12:46:06'),(6,'S','2015-04-20 12:46:08',1138,6,30000,'P','P','The truck passed the scale test.','2015-04-20 12:46:08'),(6,'W','2015-04-20 12:46:11',185109,7,27000,'P','P','The truck passed the scale test.','2015-04-20 12:46:11'),(6,'W','2015-04-20 12:46:13',185098,8,38000,'P','F','The truck failed the scale test.','2015-04-20 12:46:13'),(6,'S','2015-04-20 12:46:14',421,3,32000,'P','F','The truck failed the scale test.','2015-04-20 12:46:15'),(6,'W','2015-04-20 12:46:16',190813,8,31000,'P','P','The truck passed the scale test.','2015-04-20 12:46:17'),(6,'W','2015-04-29 11:02:43',185135,8,40000,'P','F','The truck failed the scale test.','2015-04-29 11:02:45'),(6,'W','2015-04-29 11:02:46',1138,7,26000,'P','P','The truck passed the scale test.','2015-04-29 11:02:47'),(6,'W','2015-04-29 11:02:48',185023,7,40000,'P','F','The truck failed the scale test.','2015-04-29 11:02:49'),(6,'W','2015-04-29 11:02:50',421,5,22000,'P','P','The truck passed the scale test.','2015-04-29 11:02:51'),(6,'W','2015-04-29 11:02:52',186634,6,36000,'P','F','The truck failed the scale test.','2015-04-29 11:02:52'),(6,'S','2015-04-29 11:02:54',1138,7,36000,'P','F','The truck failed the scale test.','2015-04-29 11:02:54'),(6,'W','2015-04-29 11:02:56',189800,3,33000,'P','F','The truck failed the scale test.','2015-04-29 11:02:56'),(6,'W','2015-04-29 11:02:58',193071,8,27000,'P','P','The truck passed the scale test.','2015-04-29 11:02:58'),(6,'S','2015-04-29 11:02:59',421,4,32000,'P','F','The truck failed the scale test.','2015-04-29 11:03:00'),(6,'W','2015-04-29 11:03:01',185410,4,31000,'P','P','The truck passed the scale test.','2015-04-29 11:03:02'),(6,'W','2015-05-01 10:48:00',194226,8,45000,'P','F','The truck failed the scale test.','2015-05-01 10:48:01'),(6,'W','2015-05-01 10:48:03',1138,3,22000,'P','P','The truck passed the scale test.','2015-05-01 10:48:04'),(6,'W','2015-05-01 10:48:05',190077,8,25000,'P','P','The truck passed the scale test.','2015-05-01 10:48:05'),(6,'W','2015-05-01 10:48:07',421,4,33000,'P','F','The truck failed the scale test.','2015-05-01 10:48:07'),(6,'W','2015-05-01 10:48:09',193592,8,40000,'P','F','The truck failed the scale test.','2015-05-01 10:48:09'),(6,'S','2015-05-01 10:48:11',1138,7,44000,'P','F','The truck failed the scale test.','2015-05-01 10:48:11'),(6,'W','2015-05-01 10:48:12',190062,6,37000,'P','F','The truck failed the scale test.','2015-05-01 10:48:13'),(6,'W','2015-05-01 10:48:14',185080,5,23000,'P','P','The truck passed the scale test.','2015-05-01 10:48:15'),(6,'S','2015-05-01 10:48:16',421,6,30000,'P','P','The truck passed the scale test.','2015-05-01 10:48:16'),(6,'W','2015-05-01 10:48:18',185385,5,30000,'P','P','The truck passed the scale test.','2015-05-01 10:48:18'),(1,'W','2015-05-01 12:20:10',189040,6,27000,'P','P','The truck passed the scale test.','2015-05-01 12:20:23'),(1,'W','2015-05-01 12:20:26',1138,6,32000,'P','F','The truck failed the scale test.','2015-05-01 12:20:27'),(1,'W','2015-05-01 12:20:46',194094,6,23000,'P','P','The truck passed the scale test.','2015-05-01 12:20:46'),(1,'W','2015-05-01 12:20:49',421,6,31000,'P','P','The truck passed the scale test.','2015-05-01 12:20:49'),(1,'W','2015-05-01 12:20:53',192432,6,36000,'P','F','The truck failed the scale test.','2015-05-01 12:20:53'),(1,'S','2015-05-01 12:20:56',1138,6,37000,'P','F','The truck failed the scale test.','2015-05-01 12:20:56'),(1,'W','2015-05-01 12:20:59',555,6,36000,'P','F','The truck failed the scale test.','2015-05-01 12:21:00'),(1,'W','2015-05-01 12:21:03',193818,6,28000,'P','P','The truck passed the scale test.','2015-05-01 12:21:03'),(1,'S','2015-05-01 12:21:06',421,6,38000,'P','F','The truck failed the scale test.','2015-05-01 12:21:06'),(1,'W','2015-05-01 12:21:09',192112,6,24000,'P','P','The truck passed the scale test.','2015-05-01 12:21:10');
+INSERT INTO `weight_report` VALUES (2,'W','2015-09-24 11:07:11',0,6,82000,'P','F','The truck failed the weight test.','2015-09-24 11:07:11'),(2,'S','2015-09-24 11:07:15',0,6,82000,'P','F','The truck failed the weight test.','2015-09-24 11:07:15'),(2,'W','2015-09-24 11:07:19',1,6,81000,'P','F','The truck failed the weight test.','2015-09-24 11:07:19'),(2,'S','2015-09-24 11:07:24',1,6,81000,'P','F','The truck failed the weight test.','2015-09-24 11:07:24'),(2,'W','2015-09-24 11:07:25',2,6,94000,'P','F','The truck failed the weight test.','2015-09-24 11:07:25'),(2,'S','2015-09-24 11:07:28',2,6,94000,'P','F','The truck failed the weight test.','2015-09-24 11:07:28'),(2,'W','2015-09-24 11:07:32',3,6,88000,'P','F','The truck failed the weight test.','2015-09-24 11:07:32'),(2,'S','2015-09-24 11:07:37',3,6,88000,'P','F','The truck failed the weight test.','2015-09-24 11:07:37'),(2,'W','2015-09-24 11:07:38',4,6,66000,'P','P','The truck passed the weight test.','2015-09-24 11:07:38'),(2,'W','2015-09-24 11:07:42',5,6,79000,'P','P','Passed the Scale Check.','2015-09-24 11:07:42'),(2,'W','2015-09-24 11:07:50',6,6,71000,'P','P','The truck passed the weight test.','2015-09-24 11:07:50'),(2,'W','2015-09-24 11:07:55',7,6,76000,'P','P','The truck passed the weight test.','2015-09-24 11:07:55'),(2,'W','2015-09-24 11:07:59',8,6,88000,'P','F','Failed the Scale Check.','2015-09-24 11:07:59'),(2,'S','2015-09-24 11:08:02',8,6,88000,'P','F','Failed the Scale Check.','2015-09-24 11:08:02'),(2,'W','2015-09-24 11:08:03',9,6,69000,'P','P','The truck passed the weight test.','2015-09-24 11:08:03');
 /*!40000 ALTER TABLE `weight_report` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -658,4 +723,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-01 12:35:34
+-- Dump completed on 2015-10-30  9:39:34

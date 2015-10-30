@@ -39,7 +39,8 @@ SRI RELEASE-NOTES
 - Outstanding issues (unresolved defects, workarounds, installation issues 
 etc)
 
-- Installation guide: N/A
+- Installation guide:
+See the notice.txt at the root of each product for required package list
 
 - Known Issues: N/A
 
